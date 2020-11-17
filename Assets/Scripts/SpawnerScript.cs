@@ -12,6 +12,7 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
+    [SerializeField]
     public GameObject enemy;
     private float spawnerWidth;
     private float spawnerDepth;

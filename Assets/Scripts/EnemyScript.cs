@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//Скрипт на простейшее передвижение врагов
-//Если игрок подошел близко, начинает идти в его сторону
-//Это очень ранняя пре альфа версия
-
-//TODO:
-//Сделать перемещение физическим
+using UnityEngine.Animations;
 
 public class EnemyScript : MonoBehaviour
 {
-    public Transform player;                        //Позиция игрока
-    private Transform enemy;                        //Позиция врага
-    private float aggrDistance = 15f;               //Дистанция агра, менять на готовой карте
-    private bool isTriggered = false;               //Требуется, если нужно, чтобы враг преследовал героя на любой дистанции
-    void Start()
+    [SerializeField]
+    private Transform player;
+    private Transform enemy;
+    [SerializeField]
+    private float aggrDistance;                     //Дистанция агра, выставить в инспекторе
+    private bool isTriggered = false;
+    [SerializeField]
+    private float attackDistance;                   //Дистанция атаки, выставить в инспекторе
+    private bool isHitCooldown = false;             //Находится атака на кулдауне или нет
+    public float speedEnemy;                        //скорость врага
+    void Awake()
     {
         enemy = this.transform;
     }
@@ -23,15 +23,27 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         if (Vector3.Distance(player.position, enemy.position) < aggrDistance || isTriggered)                //Если игрок подошел на дистанцию агра
-        {
-            Triggered();
-        }
+            Trigger();
+        if (Vector3.Distance(player.position, enemy.position) < attackDistance && !isHitCooldown)
+            StartCoroutine(nameof(Hit));
     }
 
     //Сюда можно прописать другую логику триггера
-    void Triggered()
+    void Trigger()
     {
         isTriggered = true;
-        enemy.position = Vector3.MoveTowards(enemy.position, player.position, Time.deltaTime*10);
+        enemy.position = Vector3.MoveTowards(enemy.position, player.position, Time.deltaTime* speedEnemy);
+        //TODO сделать нормальный поворот
+        transform.LookAt(player);
+    }
+
+    //TODO Можно сделать задержку перед атакой, например 0.5 секунды чтобы можно было уклониться
+    IEnumerator Hit()
+    {
+        isHitCooldown = true;
+        player.gameObject.SendMessage("AddDamage", 1);
+        yield return new WaitForSeconds(5);
+        isHitCooldown = false;
     }
 }
+
