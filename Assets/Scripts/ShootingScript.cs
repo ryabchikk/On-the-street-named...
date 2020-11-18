@@ -28,7 +28,13 @@ public class ShootingScript : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(new Ray(transform.position, transform.forward), out hit);                   //Реализация хитскан механики
-        if (hit.collider.tag == "Enemy")                                                                                   //Здесь может быть любой объект
-            Destroy(hit.collider.gameObject);                                                                             //И любая логика попадания
+        if (hit.collider.tag == "Enemy") 
+        { 
+            Destroy(hit.collider.gameObject);
+            Debug.Log("popal");
+        }                                                                                   //Здесь может быть любой объект
+            
+        
+        //И любая логика попадания
     }
 }
