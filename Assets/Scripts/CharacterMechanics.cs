@@ -36,11 +36,11 @@ public class CharacterMechanics : MonoBehaviour
         moveVector.x = Input.GetAxis("Horizontal") * speed;
         moveVector.z = Input.GetAxis("Vertical") * speed;
 
-        if (Vector3.Angle(Vector3.forward, moveVector) > 1f || Vector3.Angle(Vector3.forward, moveVector) == 0)
+        /*if (Vector3.Angle(Vector3.forward, moveVector) > 1f || Vector3.Angle(Vector3.forward, moveVector) == 0)
         {
             Vector3 direct = Vector3.RotateTowards(transform.forward, moveVector, speed, 0.0f);
             transform.rotation = Quaternion.LookRotation(direct);
-        }
+        }*/
         moveVector.y = gravForce;
         ch_controller.Move(moveVector * Time.deltaTime);//метод движения по направлению
     }

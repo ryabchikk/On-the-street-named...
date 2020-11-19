@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
+    private Transform enemy;
     public float dist;
     public float radius=10;
     NavMeshAgent nav;
