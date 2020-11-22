@@ -4,16 +4,16 @@ using System.Collections;
 public class MoveCamera : MonoBehaviour
 {
     //перемещаемый объект
-    public GameObject player; 
+    public Transform player; 
     private Vector3 offset;
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        offset = transform.position - player.position;
     }
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.position = player.position + offset;
     }
 }
