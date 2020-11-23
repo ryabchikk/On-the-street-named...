@@ -34,7 +34,7 @@ public class ShootingScript : MonoBehaviour
     void Shoot()
     {
         RaycastHit hit;
-        Physics.Raycast(new Ray(gameObject.transform.position+new Vector3(0,1,0), gameObject.transform.forward), out hit);//Реализация хитскан механики
+        Physics.Raycast(new Ray(gameObject.transform.position+new Vector3(0,-2,0), gameObject.transform.forward), out hit);//Реализация хитскан механики
         //LaserLine.SetPosition(0, gameObject.transform.position);
         //LaserLine.SetPosition(1, hit.point);
         if (hit.collider.tag == "Enemy") 
