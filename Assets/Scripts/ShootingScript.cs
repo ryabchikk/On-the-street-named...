@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//HOW TO:
 //Поставить врагу тег Enemy
 //Скрипт в объект игрока
 //Убрать камеру из игрока, обновить скрипт
 //Создать слой Terrain и поставить на землю
 
-//Решение довольно костыльное
 public class ShootingScript : MonoBehaviour
 {
     private LineRenderer LaserLine;
+    private AudioSource shootSound;
+    private bool isInMinigame = false;
     private void Start()
     {
-        LaserLine = GetComponent<LineRenderer>();    
+        LaserLine = GetComponent<LineRenderer>();
+        shootSound = GetComponent<AudioSource>();
     }
    
     void Update()
@@ -23,20 +24,20 @@ public class ShootingScript : MonoBehaviour
         RaycastHit hit;
         LayerMask mask = LayerMask.GetMask("Terrain");
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, mask);//Каст луча из камеры через курсор чтобы получить точку в мире на которую указывает курсор
-        transform.LookAt(hit.point);//Всегда смотрит на эту точку
+        transform.LookAt(hit.point);
         transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);//Исправление вращения. Без этой строчки объект вращается по всем осям, а не тольно по Y
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isInMinigame)
         {
-            Shoot();
+            StartCoroutine(nameof(Shoot));
         }
     }
 
     void Shoot()
     {
         RaycastHit hit;
-        Physics.Raycast(new Ray(gameObject.transform.position+new Vector3(0,-2,0), gameObject.transform.forward), out hit);//Реализация хитскан механики
-        //LaserLine.SetPosition(0, gameObject.transform.position);
-        //LaserLine.SetPosition(1, hit.point);
+        Physics.Raycast(new Ray(gameObject.transform.position+new Vector3(0,-2,0), gameObject.transform.forward), out hit);
+        shootSound.Play();
+        StartCoroutine("DrawLaser", hit);
         if (hit.collider.tag == "Enemy") 
         {
             
@@ -44,8 +45,38 @@ public class ShootingScript : MonoBehaviour
             Debug.Log("popal");
             
         }
-        
-        //Здесь может быть любой объект
-        //И любая логика попадания
+    }
+
+    //Для плавности менять цифры в циклах
+    //Time.deltaTime вместо константы для того чтобы не зависело от фпс
+    //Добавить для луча материал
+    IEnumerator DrawLaser(RaycastHit hit)
+    {
+        LaserLine.SetPosition(0, gameObject.transform.position);
+        LaserLine.SetPosition(1, hit.point);
+
+        //Возрастание толщины луча
+        while(LaserLine.widthMultiplier < 1)
+        {
+            LaserLine.widthMultiplier += 0.1f;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        //Убывание толщины луча
+        while(LaserLine.widthMultiplier > 0)
+        {
+            LaserLine.widthMultiplier -= 0.1f;
+            yield return new WaitForSeconds(Time.deltaTime * 2);
+        }
+    }
+
+    //Вызывать эту функцию через SendMessage когда начинается и кончается мини игра
+    //Нужно чтобы заблокировать стрельбу пока игрок находится в мини игре
+    //На true вызывается объектом который вызывает мини игру
+    //На false вызывается доской
+    //Обязательно поставить тег на игрока
+    void MinigameState(bool state)
+    {
+        isInMinigame = state;
     }
 }
