@@ -19,14 +19,12 @@ public class Board : MonoBehaviour
     private Transform parent;
     public int[] colSums;
     public int[] rowSums;
-    private GameObject player;
     void Start()
     {
         //С рандомом видимо решений не получится, поэтому одно заготовленное
         //Для проверки к нему ответы 8 9 6 6 4 3 4 2 1
         colSums = new int[3] { 18, 15, 10 };
         rowSums = new int[3] { 23, 13, 7 };
-        player = GameObject.FindWithTag("Player");
         BlocksInit();
     }
 
@@ -38,8 +36,6 @@ public class Board : MonoBehaviour
         flag = CheckSumsInCols();
         if (flag)
             flag = CheckSumsInRows();
-        if(flag)
-            player.SendMessage("MinigameState", false);
         return flag;
     }
 
@@ -55,7 +51,9 @@ public class Board : MonoBehaviour
         int sum = 0;
         for (int i = 1; i < 4; i++)
         {
-            sum = (from n in blocks where n.column == i && n.row != 0 select n.GetNum()).Sum();
+            IEnumerable<int> nums = from n in blocks where n.column == i && n.row != 0 select n.GetNum();
+            foreach (int n in nums)
+                sum += n;
 
             if (sum != colSums[i - 1])
                 return false;
@@ -71,7 +69,9 @@ public class Board : MonoBehaviour
         int sum = 0;
         for (int i = 1; i < 4; i++)
         {
-            sum = (from n in blocks where n.column != 0 && n.row == i select n.GetNum()).Sum();
+            IEnumerable<int> nums = from n in blocks where n.column != 0 && n.row == i select n.GetNum();
+            foreach (int n in nums)
+                sum += n;
 
             if (sum != rowSums[i - 1])
                 return false;

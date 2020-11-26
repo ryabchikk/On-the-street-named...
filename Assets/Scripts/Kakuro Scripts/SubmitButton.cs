@@ -15,6 +15,7 @@ public class SubmitButton : MonoBehaviour
     }
 
     //Вызывается по клику
+    //По сути заглушка для обработки результата
     void Click()
     {
         if (board.CheckSums())
