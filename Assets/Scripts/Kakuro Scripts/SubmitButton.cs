@@ -8,21 +8,27 @@ using UnityEngine;
 public class SubmitButton : MonoBehaviour
 {
     private Board board;
+    private ShootingScript ShootActivation;
     void Start()
     {
         //Доска
         board = GameObject.FindWithTag("Board").GetComponent<Board>();
+        ShootActivation = GameObject.FindWithTag("Player").GetComponent<ShootingScript>();
     }
 
     //Вызывается по клику
-    //По сути заглушка для обработки результата
     void Click()
     {
         if (board.CheckSums())
+        {
             Destroy(board.gameObject, 1f);
-
-        else
+            ShootActivation.enabled = true;
+            Time.timeScale = 1;
+        }
+        else 
+        { 
             board.WrongNumbers();
+        }
     }
 }
 

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class CodeLock : MonoBehaviour {
 
@@ -24,9 +23,7 @@ public class CodeLock : MonoBehaviour {
 	public RectTransform panel; // пустой RectTransform, относительно центра которого, будет построена сетка
 	public bool buildButtons; // создание кнопки
 	public RectTransform[] allButtons;
-	public GameObject lock2D ;
-	public GameObject unlock2D ;
-
+	
 	void Start() 
 	{
 		unlock = false;
@@ -34,22 +31,7 @@ public class CodeLock : MonoBehaviour {
 		_InputField.characterLimit = password.Length;
 		ResetPass();
 		if(buildButtons) BuildGrid(); else SetButton();
-
-		lock2D = GameObject.Find("NAME").GetComponent<GameObject>();
-		unlock2D = GameObject.Find("NAME").GetComponent<GameObject>();
-		
 	}
-	
-	private void Update()
-	{
-	
-		if(unlock == true)
-			{
-			lock2D.SetActive(false);
-			unlock2D.SetActive(true);
-			}	
-	}
-
 
 	void SetButton() // добавление событий для кнопок
 	{
@@ -77,7 +59,6 @@ public class CodeLock : MonoBehaviour {
 				break;
 			}
 			i++;
-			
 		}
 	}
 	
@@ -139,13 +120,11 @@ public class CodeLock : MonoBehaviour {
 				// делаем кнопки неактивными, если пароль принят
 				tr.GetComponent<Button>().interactable = false;
 			}
-			
-			
+
 			unlock = true;
 			ClearText();
 			_InputField.placeholder.GetComponent<Text>().text = success;
 			_InputField.placeholder.GetComponent<Text>().color = successColor;
-
 		}
 		else
 		{
@@ -154,8 +133,7 @@ public class CodeLock : MonoBehaviour {
 			_InputField.placeholder.GetComponent<Text>().color = errorColor;
 		}
 	}
-
-
+	
 	public void ResetPass() 
 	{
 		ClearText();

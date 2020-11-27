@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class HealthController : MonoBehaviour
 {
     public int Health { get; private set; } = 3;
-    public Text t;
+    [SerializeField]public Image[] Lives;
+    private int CountLive;
+
+    private void Start()
+    {
+        CountLive = Lives.Length - 1;
+    }
     //При модификации здоровья пользоваться только этими функциями
     void AddDamage(int amount)
     {
@@ -18,11 +24,11 @@ public class HealthController : MonoBehaviour
         else 
         {
             Health -= 1;
-            t.text = " ";
+            Lives[CountLive].enabled = false;
+            CountLive--;
         }
             
     }
-
     //Не просили, но я сделал
     /*ну и правильно, что сделал*/
     void AddHeal(int amount)

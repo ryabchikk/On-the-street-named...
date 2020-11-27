@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
             nav.enabled = true;
             nav.SetDestination(player.transform.position);
         }
-        if (dist < 4 && !isHitCooldown) 
+        if (dist < 6 && !isHitCooldown) 
         {
             nav.enabled = false;
             StartCoroutine(nameof(Hit));

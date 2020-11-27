@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3670058663987362134}
   - component: {fileID: 939078160898060392}
   - component: {fileID: 7194984185098581978}
+  - component: {fileID: 7943761564468614965}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Tree2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +83,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -90,6 +91,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &7943761564468614965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399251208251121038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.4
+  m_Height: 52.6
+  m_Direction: 1
+  m_Center: {x: 0.1, y: 25.14, z: 0.11}
 --- !u!114 &-8261020364581432627
 MonoBehaviour:
   m_ObjectHideFlags: 0
