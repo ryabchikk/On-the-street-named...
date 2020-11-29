@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public void OnClickStart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
     public void OnclickExit()

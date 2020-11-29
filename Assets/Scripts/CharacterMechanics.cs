@@ -49,7 +49,7 @@ public class CharacterMechanics : MonoBehaviour
     {
         if (!ch_controller.isGrounded)
         {
-            gravForce -= 50f * Time.deltaTime;
+            gravForce -= 100f * Time.deltaTime;
         }
         else 
         {

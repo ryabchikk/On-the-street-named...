@@ -58,6 +58,7 @@ public class ShootingScript : MonoBehaviour
         //Возрастание толщины луча
         while(LaserLine.widthMultiplier < 1)
         {
+            LaserLine.SetPosition(0, gameObject.transform.position);
             LaserLine.widthMultiplier += 0.1f;
             yield return new WaitForSeconds(Time.deltaTime);
         }
@@ -65,8 +66,9 @@ public class ShootingScript : MonoBehaviour
         //Убывание толщины луча
         while(LaserLine.widthMultiplier > 0)
         {
+            LaserLine.SetPosition(0, gameObject.transform.position);
             LaserLine.widthMultiplier -= 0.1f;
-            yield return new WaitForSeconds(Time.deltaTime * 2);
+            yield return new WaitForSeconds(Time.deltaTime * 0.5f);
         }
     }
 
