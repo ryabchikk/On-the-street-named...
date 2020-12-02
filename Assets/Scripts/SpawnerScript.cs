@@ -24,12 +24,12 @@ public class SpawnerScript : MonoBehaviour
         spawner = this.gameObject.transform;
         spawnerWidth = spawner.localScale.x;
         spawnerDepth = spawner.localScale.z;
-        SpawnEnemies(enemy);
+        
     }
 
     void Update()
     {
-        
+
     }
 
     //Возможно в этой функции будет непонятно зачем нужны эти строки
@@ -45,5 +45,22 @@ public class SpawnerScript : MonoBehaviour
             Random.Range(spawner.position.z - spawnerDepth / 2, spawner.position.z + spawnerDepth / 2)), 
             Quaternion.identity);
         }
+    }
+
+
+    IEnumerator SpawnEnemiesMultiple(int count, float interval)
+    {
+        for(int i = 0; i < count; i++)
+        { 
+            SpawnEnemies(enemy);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    //Для управления из внешних объектов
+    //Вызвать эту функцию из объекта который триггерит спавн
+    public void StartSpawning(int count, float interval)
+    {
+        StartCoroutine(SpawnEnemiesMultiple(count, interval));
     }
 }

@@ -1900,7 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 3336008766582960663, guid: 11bb108fa08848845a7fb1bd01e3379a, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 2126099492}
 --- !u!65 &694091043
 BoxCollider:
   m_ObjectHideFlags: 0
