@@ -11,21 +11,26 @@ public class TestBox : MonoBehaviour
     private GameObject board;               //В инспекторе сюда префаб доски
     [SerializeField]
     private GameObject player;
+    [SerializeField]
     private ShootingScript ShootActivation;
+    private bool f;
     private void Start()
     {
         ShootActivation = player.GetComponent<ShootingScript>();
     }
     private void OnTriggerStay(Collider other)
     {
-            if ((Input.GetKeyDown("e"))&&(other.CompareTag("Player"))) 
+        if (other.CompareTag("Player"))
+        {
+            if (Input.GetKeyDown("e"))
             { 
                 StartTest(other.gameObject);
                 ShootActivation.enabled = false;
                 Time.timeScale = 0;
             }
+            
+        }
     }
-
     private void StartTest(GameObject player)
     {
         player.SendMessage("MinigameState", true);

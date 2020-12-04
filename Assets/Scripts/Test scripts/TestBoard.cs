@@ -16,7 +16,7 @@ public class TestBoard : MonoBehaviour
 
     [SerializeField]
     //Количество вопросов
-    private const int questionsCount = 3;
+    private const int questionsCount = 4;
 
     //Текущие варианты ответа
     private IEnumerator<string> answersCurr;
@@ -70,11 +70,12 @@ public class TestBoard : MonoBehaviour
     {
         answersAll = new List<string>[questionsCount]
         {
-            new List<string> { "Var 11", "Var 21", "Var 31", "Var 41 Right" },
-            new List<string> { "Var 12", "Var 22", "Var 32", "Var 42 Right" },
-            new List<string> { "Var 13", "Var 23", "Var 33", "Var 43 Right" },
+            new List<string> { "Япония", "Германия", "Узбекистан", "Азербайджан" },
+            new List<string> { "Инженер", "Разведчик", "Военный врач", "Журналист" },
+            new List<string> { "Джек", "Дора", "Кент", "Рамзай" },
+            new List<string> { "1941", "1944", "Не присвоено", "1964" },
         };
-        questions = new List<string>() { "Q1", "Q2", "Q3" }.GetEnumerator();
+        questions = new List<string>() { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
     }
 
     #endregion
@@ -116,7 +117,7 @@ public class TestBoard : MonoBehaviour
     {
         Debug.Log("Success");
         player.SendMessage("MinigameState", false);
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject);
     }
 
     //Заглушка
@@ -124,7 +125,7 @@ public class TestBoard : MonoBehaviour
     private void Lose()
     {
         Debug.Log("Lose");
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject);
     }
     #endregion
 
