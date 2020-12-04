@@ -6,6 +6,7 @@ using System.Linq;
 
 public class TestBoard : MonoBehaviour
 {
+    
     [SerializeField]
     //Сюда префаб блока
     private GameObject block;
@@ -32,10 +33,11 @@ public class TestBoard : MonoBehaviour
 
     //Игрок
     private GameObject player;
-
+    private ShootingScript ShootActivation;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        ShootActivation = player.GetComponent<ShootingScript>();
         SetQnA();
         InitBlocks();
     }
@@ -118,6 +120,8 @@ public class TestBoard : MonoBehaviour
         Debug.Log("Success");
         player.SendMessage("MinigameState", false);
         Destroy(this.gameObject);
+        ShootActivation.enabled = true;
+        Time.timeScale = 1;
     }
 
     //Заглушка
@@ -125,7 +129,11 @@ public class TestBoard : MonoBehaviour
     private void Lose()
     {
         Debug.Log("Lose");
+        player.SendMessage("MinigameState", false);
         Destroy(this.gameObject);
+        ShootActivation.enabled = true;
+        Time.timeScale = 1;
+        
     }
     #endregion
 

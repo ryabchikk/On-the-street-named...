@@ -1,17 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-//Скрипт для объекта который будет вызывать какуро
-//На объекте добавить триггер коллайдер в который нужно будет зайти чтобы начать
-
-public class TestBox : MonoBehaviour
+public class PanelCodeActivate : MonoBehaviour
 {
     [SerializeField]
     private GameObject board;               //В инспекторе сюда префаб доски
-    [SerializeField]
-    private Text text;
     [SerializeField]
     private GameObject player;
     private ShootingScript ShootActivation;
@@ -24,18 +18,11 @@ public class TestBox : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (Input.GetKeyDown("e"))
-            { 
-                StartTest(other.gameObject);
+            {
+                board.SetActive(true);
                 ShootActivation.enabled = false;
                 Time.timeScale = 0;
             }
-            
         }
-    }
-    private void StartTest(GameObject player)
-    {
-        player.SendMessage("MinigameState", true);
-        Instantiate(board);
-        text.enabled=true;
     }
 }

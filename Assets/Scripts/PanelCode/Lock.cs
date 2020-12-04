@@ -4,7 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Lock : MonoBehaviour {
-
+	public Text info;
+	private GameObject player;
+	private ShootingScript ShootActivation;
 	[Header("General")]
 	public bool unlock; // переходит в true если замок открыт
 	public InputField _InputField; // поле ввода текста
@@ -29,6 +31,8 @@ public class Lock : MonoBehaviour {
 
 	void Start() 
 	{
+		player = GameObject.FindWithTag("Player");
+		ShootActivation = player.GetComponent<ShootingScript>();
 		unlock = false;
 		_InputField.interactable = false;
 		_InputField.characterLimit = password.Length;
@@ -145,7 +149,12 @@ public class Lock : MonoBehaviour {
 			ClearText();
 			_InputField.placeholder.GetComponent<Text>().text = success;
 			_InputField.placeholder.GetComponent<Text>().color = successColor;
-
+			
+			//Снятие с паузы и обновление информации 
+			Time.timeScale = 1;
+			ShootActivation.enabled = true;
+			info.enabled = true;
+			Destroy(this.gameObject);
 		}
 		else
 		{
