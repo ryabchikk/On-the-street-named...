@@ -21,15 +21,11 @@ public class TestBox : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&&(Input.GetKey("e")))
         {
-            if (Input.GetKeyDown("e"))
-            { 
                 StartTest(other.gameObject);
                 ShootActivation.enabled = false;
-                Time.timeScale = 0;
-            }
-            
+                Time.timeScale = 0;   
         }
     }
     private void StartTest(GameObject player)

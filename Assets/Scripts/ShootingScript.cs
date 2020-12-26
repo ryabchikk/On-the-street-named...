@@ -56,20 +56,24 @@ public class ShootingScript : MonoBehaviour
         LaserLine.SetPosition(1, hit.point);
 
         //Возрастание толщины луча
-        while(LaserLine.widthMultiplier < 1)
+        /*while(LaserLine.widthMultiplier < 1)
         {
             LaserLine.SetPosition(0, gameObject.transform.position);
-            LaserLine.widthMultiplier += 0.1f;
+            LaserLine.widthMultiplier =1;
             yield return new WaitForSeconds(Time.deltaTime);
-        }
+        }*/
 
+        LaserLine.SetPosition(0, gameObject.transform.position);
+        LaserLine.widthMultiplier = 1;
+        yield return new WaitForSeconds(Time.deltaTime);
         //Убывание толщины луча
-        while(LaserLine.widthMultiplier > 0)
+        while (LaserLine.widthMultiplier > 0)
         {
             LaserLine.SetPosition(0, gameObject.transform.position);
             LaserLine.widthMultiplier -= 0.1f;
             yield return new WaitForSeconds(Time.deltaTime * 0.5f);
         }
+        
     }
 
     //Вызывать эту функцию через SendMessage когда начинается и кончается мини игра
