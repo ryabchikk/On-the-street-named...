@@ -11,6 +11,7 @@ public class Grabbing : MonoBehaviour
 
     private bool Grab = false;   //ф-ция притяжения
     private bool Throw = false;   //ф-ция толчка
+    private bool f = false;
     public Transform offset;
     public Camera camera;
     RaycastHit hit;   //луч
@@ -27,15 +28,21 @@ public class Grabbing : MonoBehaviour
             Physics.Raycast(new Ray(gameObject.transform.position + new Vector3(0, -2, 0), gameObject.transform.forward), out hit, RayDistance);
             if (hit.rigidbody)
             {
-                GRABI+=1;
-                if (GRABI == 1)
+                GRABI = GRABI + 1;
+                switch (GRABI)
                 {
-                    Grab = true;
+                    case 1:
+                        Grab = true;
+                        break;
+                    case 2:
+                        Grab = false;
+                        break;
+                    default:
+                        break;
                 }
-                else 
+                if (GRABI == 3)
                 {
                     GRABI = 0;
-                    Grab = false;
                 }
                 if (Grab == false)
                 {
@@ -52,6 +59,7 @@ public class Grabbing : MonoBehaviour
                 GRABI = 0;
                 Grab = false;
                 Throw = true;
+                
             }
         }
         //ф-ция притяжения
@@ -60,7 +68,7 @@ public class Grabbing : MonoBehaviour
             if (hit.rigidbody)
             {
                 hit.rigidbody.velocity = (offset.position - (hit.transform.position + hit.rigidbody.centerOfMass)) * grabPower;
-
+                hit.rigidbody.freezeRotation = true;
             }
         }
         //ф-ция толчка
@@ -69,12 +77,12 @@ public class Grabbing : MonoBehaviour
             if (hit.rigidbody)
             {
                 hit.rigidbody.velocity = gameObject.transform.forward * throwPower;
+                hit.rigidbody.freezeRotation = false;
                 Throw = false;
             }
         }
     }
-
-    private void Grabb()
+    /*private void Grabb()
     {
         Ray ray = camera.ScreenPointToRay(gameObject.transform.position);
         Physics.Raycast(ray, out hit, RayDistance);
@@ -82,5 +90,5 @@ public class Grabbing : MonoBehaviour
         {
             Grab = true;
         }
-    }
+    }*/
 }

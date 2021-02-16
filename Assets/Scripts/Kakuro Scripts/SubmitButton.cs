@@ -21,7 +21,7 @@ public class SubmitButton : MonoBehaviour
     {
         if (board.CheckSums())
         {
-            Destroy(board.gameObject, 1f);
+            Destroy(board.gameObject);
             ShootActivation.enabled = true;
             Time.timeScale = 1;
         }
