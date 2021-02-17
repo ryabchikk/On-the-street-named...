@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class InfoMenu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject infoPanel;
-    [SerializeField]
-    private GameObject player;
-    private ShootingScript ShootActivation;
+    [SerializeField] private GameObject infoPanel;
+    private Player _player;
+    
     private void Start()
     {
-        ShootActivation = player.GetComponent<ShootingScript>();
+        _player = Player.player;
     }
     public void InfoOn() 
     {
-        ShootActivation.enabled = false;
+        _player.DeactivateShooting();
         infoPanel.SetActive(true);
-        Time.timeScale = 0;
     }
     public void InfoOff()
     {
-        ShootActivation.enabled = true;
+        _player.ActivateShooting();
         infoPanel.SetActive(false);
-        Time.timeScale = 1;
     }
 }

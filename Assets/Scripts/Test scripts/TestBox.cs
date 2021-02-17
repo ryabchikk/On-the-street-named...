@@ -14,18 +14,22 @@ public class TestBox : MonoBehaviour
     private Player _player;
     private bool _flashCollected;
     private bool _kakuroCompleted;
+    private bool _lockCompleted;
     
     private void Start()
     {
         testBox = this;
         _player = Player.player;
+        KakuroBox.Completed += OnKakuroCompleted;
+        FlashDrive.Collected += OnFlashCollected;
+        Lock.Completed += OnLockCompleted;
     }
     
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && Input.GetKey("e"))
         {
-            if (_flashCollected && _kakuroCompleted)
+            if (_flashCollected && _kakuroCompleted && _lockCompleted)
                 StartTest();
             else
                 Debug.Log("TODO добавить сообщение о том, что не все пройдено");
@@ -33,9 +37,11 @@ public class TestBox : MonoBehaviour
             
     }
 
-    public void OnFlashCollected() => _flashCollected = true;
+    private void OnFlashCollected() => _flashCollected = true;
 
-    public void OnKakuroCompleted() => _kakuroCompleted = true;
+    private void OnKakuroCompleted() => _kakuroCompleted = true;
+
+    private void OnLockCompleted() => _lockCompleted = true;
 
     private void StartTest()
     {

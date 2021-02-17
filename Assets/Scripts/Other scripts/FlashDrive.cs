@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class FlashDrive : MonoBehaviour
 {
-    [SerializeField] private Text text;
-    private TestBox _testBox;
-
-    private void Start()
-    {
-        _testBox = TestBox.testBox;
-    }
+    public static event Action Collected;
 
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player") || !Input.GetKey("e")) return;
-        
-        _testBox.OnFlashCollected();
+        OnCollected();
         Destroy(gameObject);
-        text.enabled = true;
+    }
+
+    private static void OnCollected()
+    {
+        Collected?.Invoke();
     }
 }

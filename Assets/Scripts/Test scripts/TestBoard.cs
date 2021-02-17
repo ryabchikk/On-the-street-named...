@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.Serialization;
 
-public class TestBoard : MonoBehaviour
+public class TestBoard : MinigameBoard
 {
     
     [SerializeField] private GameObject block;
@@ -16,11 +16,9 @@ public class TestBoard : MonoBehaviour
     private List<string>[] _answersAll;
     private IEnumerator<string> _questions;
     private int _currentQuestion;
-    private Player _player;
-    
+
     void Start()
     {
-        _player = Player.player;
         SetQnA();
         InitBlocks();
     }
@@ -101,8 +99,6 @@ public class TestBoard : MonoBehaviour
     {
         Debug.Log("Lose");
         Destroy(gameObject);
-        _player.ActivateShooting();
-        
     }
 
     //Заглушка
@@ -110,7 +106,6 @@ public class TestBoard : MonoBehaviour
     {
         Debug.Log("Success");
         Destroy(gameObject);
-        _player.ActivateShooting();
     }
     
     #endregion

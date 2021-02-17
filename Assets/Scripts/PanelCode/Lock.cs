@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
-public class Lock : MonoBehaviour {
-	public Text info;
+public class Lock : MinigameBoard
+{
+	public static event Action Completed;
 	private GameObject player;
-	private ShootingScript ShootActivation;
 	[Header("General")]
 	public bool unlock; // переходит в true если замок открыт
 	public InputField _InputField; // поле ввода текста
@@ -29,15 +28,18 @@ public class Lock : MonoBehaviour {
 	public GameObject lock2D ;
 	public GameObject unlock2D ;
 
-	void Start() 
+	private void Start()
 	{
-		player = GameObject.FindWithTag("Player");
-		ShootActivation = player.GetComponent<ShootingScript>();
+		player = Player.player.gameObject;
 		unlock = false;
 		_InputField.interactable = false;
 		_InputField.characterLimit = password.Length;
 		ResetPass();
-		if(buildButtons) BuildGrid(); else SetButton();
+		
+		if(buildButtons) 
+			BuildGrid(); 
+		else 
+			SetButton();
 
 		lock2D = GameObject.Find("NAME").GetComponent<GameObject>();
 		unlock2D = GameObject.Find("NAME").GetComponent<GameObject>();
@@ -46,46 +48,43 @@ public class Lock : MonoBehaviour {
 	
 	private void Update()
 	{
-	
-		if(unlock == true)
-			{
-			lock2D.SetActive(false);
-			unlock2D.SetActive(true);
-			}	
+		if (unlock == false) return;
+		
+		lock2D.SetActive(false);
+		unlock2D.SetActive(true);
 	}
 
 
-	void SetButton() // добавление событий для кнопок
+	private void SetButton() // добавление событий для кнопок
 	{
 		int i = 1;
-		for(int j = 0; j < allButtons.Length; j++)
+		foreach (var t in allButtons)
 		{
 			switch(i)
 			{
-			case 10:
-				allButtons[j].GetComponentInChildren<Text>().text = "R";
-				allButtons[j].GetComponent<Button>().onClick.AddListener(() => {ResetPass();});
-				break;
-			case 11:
-				allButtons[j].GetComponentInChildren<Text>().text = "0";
-				allButtons[j].GetComponent<Button>().onClick.AddListener(() => {AddKeyPass("0");});
-				break;
-			case 12:
-				allButtons[j].GetComponentInChildren<Text>().text = "ОК";
-				allButtons[j].GetComponent<Button>().onClick.AddListener(() => {EnterPass();});
-				break;
-			default:
-				string number = i.ToString();
-				allButtons[j].GetComponentInChildren<Text>().text = number;
-				allButtons[j].GetComponent<Button>().onClick.AddListener(() => {AddKeyPass(number);});
-				break;
+				case 10:
+					t.GetComponentInChildren<Text>().text = "R";
+					t.GetComponent<Button>().onClick.AddListener(() => {ResetPass();});
+					break;
+				case 11:
+					t.GetComponentInChildren<Text>().text = "0";
+					t.GetComponent<Button>().onClick.AddListener(() => {AddKeyPass("0");});
+					break;
+				case 12:
+					t.GetComponentInChildren<Text>().text = "ОК";
+					t.GetComponent<Button>().onClick.AddListener(() => {EnterPass();});
+					break;
+				default:
+					string number = i.ToString();
+					t.GetComponentInChildren<Text>().text = number;
+					t.GetComponent<Button>().onClick.AddListener(() => {AddKeyPass(number);});
+					break;
 			}
 			i++;
-			
 		}
 	}
 	
-	void BuildGrid() // создание кнопок
+	private void BuildGrid() // создание кнопок
 	{
 		float sizeX = button.sizeDelta.x + offset*2;
 		float sizeY = button.sizeDelta.y + offset;
@@ -100,7 +99,7 @@ public class Lock : MonoBehaviour {
 			for(int x = 0; x < 3; x++)
 			{
 				posX += sizeX;
-				allButtons[i] = Instantiate(button) as RectTransform;
+				allButtons[i] = Instantiate(button);
 				allButtons[i].SetParent(panel);
 				allButtons[i].anchoredPosition = new Vector2(posX, posY);
 				allButtons[i].gameObject.name = "Button_ID_" + i;
@@ -111,8 +110,8 @@ public class Lock : MonoBehaviour {
 		SetButton();
 		button.gameObject.SetActive(false);
 	}
-	
-	public void AddKeyPass(string key) 
+
+	private void AddKeyPass(string key) 
 	{
 		if(_InputField.text.Length < password.Length)
 		{
@@ -120,12 +119,12 @@ public class Lock : MonoBehaviour {
 		}
 	}
 
-	void ClearText()
+	private void ClearText()
 	{
 		_InputField.text = string.Empty;
 	}
-	
-	public void EnterPass() 
+
+	private void EnterPass() 
 	{
 		if(_InputField.text == password)
 		{
@@ -150,11 +149,8 @@ public class Lock : MonoBehaviour {
 			_InputField.placeholder.GetComponent<Text>().text = success;
 			_InputField.placeholder.GetComponent<Text>().color = successColor;
 			
-			//Снятие с паузы и обновление информации 
-			Time.timeScale = 1;
-			ShootActivation.enabled = true;
-			info.enabled = true;
-			Destroy(this.gameObject);
+			OnCompleted();
+			Destroy(gameObject);
 		}
 		else
 		{
@@ -165,10 +161,15 @@ public class Lock : MonoBehaviour {
 	}
 
 
-	public void ResetPass() 
+	private void ResetPass() 
 	{
 		ClearText();
 		_InputField.placeholder.GetComponent<Text>().text = defaultText;
 		_InputField.placeholder.GetComponent<Text>().color = defaultColor;
+	}
+
+	private static void OnCompleted()
+	{
+		Completed?.Invoke();
 	}
 }

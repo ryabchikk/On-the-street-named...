@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ShootingScript shooting;
     [SerializeField] private HealthController health;
 
-    private void Start()
+    private void Awake()
     {
         player = this;
     }

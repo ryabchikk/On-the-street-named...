@@ -8,7 +8,7 @@ using System.Linq;
 //Должен находиться в префабе Board
 //Если кто нибудь захочет искать здесь Update то его здесь нет
 
-public class Board : MonoBehaviour
+public class Board : MinigameBoard
 {
     public int[] colSums;
     public int[] rowSums;

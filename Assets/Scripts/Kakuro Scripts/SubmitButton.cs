@@ -1,28 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//Скрипт кнопки проверки
-//Кнопка должна быть внутри Board
+﻿using UnityEngine;
 
 public class SubmitButton : MonoBehaviour
 {
     private Board _board;
-    private Player _player;
-    private TestBox _testBox;
+    private KakuroBox _kakuroBox;
+    
     void Start()
     {
+        _kakuroBox = KakuroBox.kakuroBox;
         _board = GameObject.FindWithTag("Board").GetComponent<Board>();
-        _player = Player.player;
-        _testBox = TestBox.testBox;
     }
     
-    void Click()
+    private void Click()
     {
         if (_board.CheckSums())
         {
-            _player.ActivateShooting();
-            _testBox.OnKakuroCompleted();
+            _kakuroBox.OnCompleted();
             Destroy(_board.gameObject);
         }
         else 
