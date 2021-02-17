@@ -8,29 +8,38 @@ using UnityEngine.UI;
 
 public class TestBox : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject board;               //В инспекторе сюда префаб доски
-    [SerializeField]
-    private Text text;
-    [SerializeField]
-    private GameObject player;
-    private ShootingScript ShootActivation;
+    public static TestBox testBox;
+    [SerializeField] private GameObject board;               //В инспекторе сюда префаб доски
+    [SerializeField] private Text text;
+    private Player _player;
+    private bool _flashCollected;
+    private bool _kakuroCompleted;
+    
     private void Start()
     {
-        ShootActivation = player.GetComponent<ShootingScript>();
+        testBox = this;
+        _player = Player.player;
     }
+    
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")&&(Input.GetKey("e")))
+        if (other.CompareTag("Player") && Input.GetKey("e"))
         {
-                StartTest(other.gameObject);
-                ShootActivation.enabled = false;
-                Time.timeScale = 0;   
+            if (_flashCollected && _kakuroCompleted)
+                StartTest();
+            else
+                Debug.Log("TODO добавить сообщение о том, что не все пройдено");
         }
+            
     }
-    private void StartTest(GameObject player)
+
+    public void OnFlashCollected() => _flashCollected = true;
+
+    public void OnKakuroCompleted() => _kakuroCompleted = true;
+
+    private void StartTest()
     {
-        player.SendMessage("MinigameState", true);
+        _player.DeactivateShooting();
         Instantiate(board);
         text.enabled=true;
     }

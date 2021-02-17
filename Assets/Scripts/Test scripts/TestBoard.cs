@@ -3,46 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.Serialization;
 
 public class TestBoard : MonoBehaviour
 {
     
-    [SerializeField]
-    //Сюда префаб блока
-    private GameObject block;
-    private TestBlock[] blocks = new TestBlock[5];
-    [SerializeField]
-    //Сюда Canvas который находится внутри префаба доски
-    private Transform parent;
-
-    [SerializeField]
-    //Количество вопросов
-    private const int questionsCount = 4;
-
-    //Текущие варианты ответа
-    private IEnumerator<string> answersCurr;
-
-    //Все варианты ответа
-    private List<string>[] answersAll;
-
-    //Все вопросы
-    private IEnumerator<string> questions;
-
-    //Номер текущего вопроса
-    private int currentQuestion = 0;
-
-    //Игрок
-    private GameObject player;
-    private ShootingScript ShootActivation;
+    [SerializeField] private GameObject block;
+    [SerializeField] private Transform parent;
+    private readonly TestBlock[] _blocks = new TestBlock[5];
+    private const int QuestionsCount = 4;
+    private IEnumerator<string> _answersCurr;
+    private List<string>[] _answersAll;
+    private IEnumerator<string> _questions;
+    private int _currentQuestion;
+    private Player _player;
+    
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        ShootActivation = player.GetComponent<ShootingScript>();
+        _player = Player.player;
         SetQnA();
         InitBlocks();
     }
-
-    
 
     #region Init
 
@@ -52,90 +33,86 @@ public class TestBoard : MonoBehaviour
     //Инициализация кнопок, заполнение массива кнопок
     private void InitBlocks()
     {
-        RectTransform rt = block.GetComponent<RectTransform>();
+        var rt = block.GetComponent<RectTransform>();
         for (int i = 0; i < 5; i++)
         {
-            GameObject b = Instantiate(block, parent);
+            var b = Instantiate(block, parent);
             b.GetComponent<RectTransform>().anchoredPosition = new Vector3(rt.position.x, rt.position.y - i * rt.sizeDelta.y, rt.position.z);
-            blocks[i] = b.GetComponent<TestBlock>();
+            _blocks[i] = b.GetComponent<TestBlock>();
         }
 
         //С первой кнопкой взаимодействовать нельзя, в ней текст вопроса
-        blocks[0].GetComponent<Button>().interactable = false;
+        _blocks[0].GetComponent<Button>().interactable = false;
 
         //Костыль, без этого не загружается текст
-        blocks[4].SendMessage("Last");
+        _blocks[4].Last();
     }
 
-    //Можно сделать чтение из файла
+    
     private void SetQnA()
     {
-        answersAll = new List<string>[questionsCount]
+        _answersAll = new[]
         {
             new List<string> { "Япония", "Германия", "Узбекистан", "Азербайджан" },
             new List<string> { "Инженер", "Разведчик", "Военный врач", "Журналист" },
             new List<string> { "Джек", "Дора", "Кент", "Рамзай" },
             new List<string> { "1941", "1944", "Не присвоено", "1964" },
         };
-        questions = new List<string>() { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
+        _questions = new List<string> { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
     }
 
     #endregion
 
     #region Event Handling
-    //Переход к следующему вопросу
-    private void NextQuestion()
+    
+    public void NextQuestion()
     {
-        if (currentQuestion < questionsCount)
+        if (_currentQuestion < QuestionsCount)
         {
-            answersCurr = answersAll[currentQuestion].GetEnumerator();
-            questions.MoveNext();
-            blocks[0].text.text = questions.Current;
+            _answersCurr = _answersAll[_currentQuestion].GetEnumerator();
+            _questions.MoveNext();
+            _blocks[0].text.text = _questions.Current;
 
 
-            foreach (var b in blocks)
-                b.isRight = false;
+            foreach (var b in _blocks)
+                b.isCorrect = false;
 
             int rightAnswer = Random.Range(1, 5);
-            blocks[rightAnswer].isRight = true;
+            _blocks[rightAnswer].isCorrect = true;
 
-            foreach (var b in (from n in blocks where n.isRight == false select n).Skip(1))
+            foreach (var b in _blocks.Where(n => n.isCorrect == false).Skip(1))
             {
-                answersCurr.MoveNext();
-                b.text.text = answersCurr.Current;
+                _answersCurr.MoveNext();
+                b.text.text = _answersCurr.Current;
             }
-            answersCurr.MoveNext();
-            blocks[rightAnswer].text.text = answersCurr.Current;
+            _answersCurr.MoveNext();
+            _blocks[rightAnswer].text.text = _answersCurr.Current;
 
-            currentQuestion++;
+            _currentQuestion++;
         }
         else
+        {
             Success();
+        }
+    }
+    
+    //Заглушка
+    public void Lose()
+    {
+        Debug.Log("Lose");
+        Destroy(gameObject);
+        _player.ActivateShooting();
+        
     }
 
     //Заглушка
-    //Скорее всего нужно будет перенести в другой скрипт и добавить логику успешного завершения
     private void Success()
     {
         Debug.Log("Success");
-        player.SendMessage("MinigameState", false);
-        Destroy(this.gameObject);
-        ShootActivation.enabled = true;
-        Time.timeScale = 1;
+        Destroy(gameObject);
+        _player.ActivateShooting();
     }
-
-    //Заглушка
-    //Скорее всего нужно будет перенести в другой скрипт и добавить логику неуспешного завершения
-    private void Lose()
-    {
-        Debug.Log("Lose");
-        player.SendMessage("MinigameState", false);
-        Destroy(this.gameObject);
-        ShootActivation.enabled = true;
-        Time.timeScale = 1;
-        
-    }
+    
     #endregion
 
-    
 }

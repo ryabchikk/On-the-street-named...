@@ -10,23 +10,18 @@ using System.Linq;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField]
-    //Сюда префаб блока
-    private GameObject block;
-    private Block[] blocks = new Block[16];
-    [SerializeField]
-    //Сюда Canvas который находится внутри префаба доски
-    private Transform parent;
     public int[] colSums;
     public int[] rowSums;
-    private GameObject player;
-    void Start()
+    [SerializeField] private GameObject block;
+    [SerializeField] private Transform parent;
+    private readonly Block[] _blocks = new Block[16];
+    
+    private void Start()
     {
         //С рандомом видимо решений не получится, поэтому одно заготовленное
         //Для проверки к нему ответы 8 9 6 6 4 3 4 2 1
-        colSums = new int[3] { 18, 15, 10 };
-        rowSums = new int[3] { 23, 13, 7 };
-        player = GameObject.FindWithTag("Player");
+        colSums = new[] { 18, 15, 10 };
+        rowSums = new[] { 23, 13, 7 };
         BlocksInit();
     }
 
@@ -34,12 +29,11 @@ public class Board : MonoBehaviour
     //Разбито на две функции для проверки сумм столбцов и строк отдельно
     public bool CheckSums()
     {
-        bool flag;
-        flag = CheckSumsInCols();
+        bool flag = CheckSumsInCols();
+        
         if (flag)
             flag = CheckSumsInRows();
-        if(flag)
-            player.SendMessage("MinigameState", false);
+        
         return flag;
     }
 
@@ -52,15 +46,12 @@ public class Board : MonoBehaviour
     //Это можно было бы записать в одну функцию, но потом
     private bool CheckSumsInCols()
     {
-        int sum = 0;
         for (int i = 1; i < 4; i++)
         {
-            sum = (from n in blocks where n.column == i && n.row != 0 select n.GetNum()).Sum();
+            int sum = (from n in _blocks where n.column == i && n.row != 0 select n.GetNum()).Sum();
 
             if (sum != colSums[i - 1])
                 return false;
-
-            sum = 0;
         }
         return true;
     }
@@ -68,15 +59,12 @@ public class Board : MonoBehaviour
     //Проверка сумм строк
     private bool CheckSumsInRows()
     {
-        int sum = 0;
         for (int i = 1; i < 4; i++)
         {
-            sum = (from n in blocks where n.column != 0 && n.row == i select n.GetNum()).Sum();
+            int sum = (from n in _blocks where n.column != 0 && n.row == i select n.GetNum()).Sum();
 
             if (sum != rowSums[i - 1])
                 return false;
-
-            sum = 0;
         }
         return true;
     }
@@ -98,9 +86,9 @@ public class Board : MonoBehaviour
             {
                 GameObject b = Instantiate(block, parent);
                 b.GetComponent<RectTransform>().anchoredPosition = new Vector3(rt.position.x + j * rt.sizeDelta.x * 0.98f, rt.position.y - i * rt.sizeDelta.y * 0.98f, rt.position.z);
-                blocks[cnt] = b.GetComponent<Block>();
-                blocks[cnt].column = j;
-                blocks[cnt].row = i;
+                _blocks[cnt] = b.GetComponent<Block>();
+                _blocks[cnt].column = j;
+                _blocks[cnt].row = i;
                 cnt++;
             }
         }
@@ -111,8 +99,8 @@ public class Board : MonoBehaviour
     {
         if (isCol)
             return colSums[num - 1];
-        else
-            return rowSums[num - 1];
+        
+        return rowSums[num - 1];
     }
 }
 

@@ -2581,7 +2581,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 3336008766582960663, guid: d87afcbca1ba7a747b7d74012b55f275, type: 3}
   text: {fileID: 2121492184}
-  player: {fileID: 1649435708}
 --- !u!65 &222041793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20029,6 +20028,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.99, z: 0}
+--- !u!114 &1649435716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649435708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333e3583b1ce08d4ab1d56e263371198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooting: {fileID: 1649435710}
+  health: {fileID: 1649435712}
 --- !u!114 &1649435718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20823,10 +20836,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e9581b265f13c47a1c42fa8198f70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1649435708}
-  dist: 4
-  radius: 1000
+  distance: 4
+  sqrRadius: 1000000
+  sqrAttackDistance: 36
+  playerTransform: {fileID: 1649435709}
   isHitCooldown: 0
+  nav: {fileID: 1727687321}
 --- !u!195 &1727687321
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23300,12 +23315,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949773700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b81ad326a25d4a45a683c1068447a9a, type: 3}
+  m_Script: {fileID: 11500000, guid: e267928e04eb10f4c93b5bae7a36755c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 3336008766582960663, guid: 11bb108fa08848845a7fb1bd01e3379a, type: 3}
-  text: {fileID: 1459220609}
-  player: {fileID: 1649435708}
 --- !u!65 &1949773702
 BoxCollider:
   m_ObjectHideFlags: 0

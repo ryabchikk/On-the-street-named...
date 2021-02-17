@@ -2,42 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject player;
-    private Transform enemy;
-    public float dist;
-    public float radius=10;
-    NavMeshAgent nav;
-    [SerializeField]
-    private bool isHitCooldown = false;
-    void Start()
+    [SerializeField] private float distance;
+    [SerializeField] private float sqrRadius;
+    [SerializeField] private float sqrAttackDistance;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private bool isHitCooldown;
+    [SerializeField] private NavMeshAgent nav;
+    private Player _player;
+    private Transform _enemy;
+
+    private void Start()
     {
-        nav = GetComponent<NavMeshAgent>();
+        _player = Player.player;
     }
-    void Update()
+    
+    private void Update()
     {
-        dist = Vector3.Distance(player.transform.position, transform.position);
-        if (dist > radius)
+        distance = (transform.position - playerTransform.position).sqrMagnitude;
+        if (distance > sqrRadius)
         {
             nav.enabled = false;
         }
         else 
         {
             nav.enabled = true;
-            nav.SetDestination(player.transform.position);
+            nav.SetDestination(playerTransform.position);
         }
-        if (dist < 6 && !isHitCooldown) 
+        if (distance < sqrAttackDistance && !isHitCooldown) 
         {
             nav.enabled = false;
             StartCoroutine(nameof(Hit));
         } 
     }
-    IEnumerator Hit()
+    
+    private IEnumerator Hit()
     {
         isHitCooldown = true;
-        player.gameObject.SendMessage("AddDamage", 1);
+        _player.ApplyDamage(1);
         yield return new WaitForSeconds(5);
         isHitCooldown = false;
     }

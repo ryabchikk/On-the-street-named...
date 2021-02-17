@@ -1,39 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TestBlock : MonoBehaviour
 {
-    private Button button;
-    private TestBoard board;
     public Text text;
-    public bool isRight = false;
-    private bool isLast = false;
+    public bool isCorrect;
+    private TestBoard _board;
+    private bool _isLast;
 
     void Start()
     {
         //Доска
-        board = GameObject.FindGameObjectWithTag("Board").GetComponent<TestBoard>();
-        //Эта кнопка
-        button = GetComponent<Button>();
+        _board = GameObject.FindGameObjectWithTag("Board").GetComponent<TestBoard>();
         //Текст этой кнопки
         text = GetComponentInChildren<Text>();
-        if(isLast)
-            board.SendMessage("NextQuestion");
+        if(_isLast)
+            _board.NextQuestion();
+    }
+    
+    //Костыль
+    public void Last()
+    {
+        _isLast = true;
     }
 
     private void Click()
     {
-        if (isRight)
-            board.SendMessage("NextQuestion");
+        if (isCorrect)
+            _board.NextQuestion();
         else
-            board.SendMessage("Lose");
-    }
-
-    //Костыль
-    private void Last()
-    {
-        isLast = true;
+            _board.Lose();
     }
 }

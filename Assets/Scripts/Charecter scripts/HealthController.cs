@@ -6,41 +6,36 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public int Health { get; private set; } = 3;
-    [SerializeField]public Image[] Lives;
-    private int CountLive;
+    private int _health = 3;
+    [SerializeField] public Image[] Lives;
+    private int _countLive;
 
     private void Start()
     {
-        CountLive = Lives.Length - 1;
+        _countLive = Lives.Length - 1;
     }
-    //При модификации здоровья пользоваться только этими функциями
-    void AddDamage(int amount)
+
+    public void AddDamage(int amount)
     {
-        if (Health - amount <= 0) 
+        if (_health - amount <= 0) 
         { 
             Die();
         }
         else 
         {
-            Health -= 1;
-            Lives[CountLive].enabled = false;
-            CountLive--;
+            _health -= 1;
+            Lives[_countLive].enabled = false;
+            _countLive--;
         }
             
     }
-    //Не просили, но я сделал
-    /*ну и правильно, что сделал*/
-    void AddHeal(int amount)
+    
+    public void AddHeal(int amount)
     {
-        if (Health + amount <= 3)
-            Health += amount;
-
+        if (_health + amount <= 3)
+            _health += amount;
     }
 
-    void Die()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    private void Die() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 }
 

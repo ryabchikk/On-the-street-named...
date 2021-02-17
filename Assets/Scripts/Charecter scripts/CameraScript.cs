@@ -11,16 +11,16 @@ using System;
 public class CameraScript : MonoBehaviour
 {
     public Transform target;
-    Vector3 pos;
-    void Start()
+    private Vector3 _pos;
+    
+    private void Start()
     {
-        //transform.LookAt(target);                                //Если нужно направить камеру на игрока разкомментировать эту строчку, иначе убрать
-        pos = transform.position - target.position;
+        _pos = transform.position - target.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = target.position + pos;
+        transform.position = target.position + _pos;
     }
 }
 
