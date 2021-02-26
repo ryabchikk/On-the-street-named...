@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1lvl.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: f508f1a3aceae9d4fa65cd7f67eae3a2
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: db36997606ea39549bb668b5be9b22cd

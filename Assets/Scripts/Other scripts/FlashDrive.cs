@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlashDrive : MonoBehaviour
+public class FlashDrive : InteractableBox
 {
     public static event Action Collected;
 

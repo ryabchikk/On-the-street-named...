@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Lock : MinigameBoard
 {
 	public static event Action Completed;
-	private GameObject player;
 	[Header("General")]
 	public bool unlock; // переходит в true если замок открыт
 	public InputField _InputField; // поле ввода текста
@@ -30,7 +29,6 @@ public class Lock : MinigameBoard
 
 	private void Start()
 	{
-		player = Player.player.gameObject;
 		unlock = false;
 		_InputField.interactable = false;
 		_InputField.characterLimit = password.Length;
@@ -43,6 +41,7 @@ public class Lock : MinigameBoard
 
 		lock2D = GameObject.Find("NAME").GetComponent<GameObject>();
 		unlock2D = GameObject.Find("NAME").GetComponent<GameObject>();
+		Debug.Log($"{lock2D == null}, {unlock2D == null}");
 		
 	}
 	

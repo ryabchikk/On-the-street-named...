@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class KakuroBox : MonoBehaviour
+public class KakuroBox : InteractableBox
 {
     public static KakuroBox kakuroBox;
     public static event Action Completed;
@@ -11,6 +11,7 @@ public class KakuroBox : MonoBehaviour
     private void Awake()
     {
         kakuroBox = this;
+        height = 4f;
     }
 
     private void OnTriggerStay(Collider other)

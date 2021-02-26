@@ -1545,7 +1545,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 697c61f0df08aaf42a769fdddfdb53ef,
         type: 3}
       propertyPath: m_Name
-      value: flesh
+      value: flash
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 697c61f0df08aaf42a769fdddfdb53ef,
         type: 3}
@@ -2046,6 +2046,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.4734845, y: 11.613835, z: 2.0137079}
   m_Center: {x: 0.031254962, y: 5.775703, z: 0.01718216}
+--- !u!1 &186652650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186652651}
+  - component: {fileID: 186652652}
+  m_Layer: 8
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &186652651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186652650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 1649435709}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &186652652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186652650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 0, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &190538969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,6 +2639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b81ad326a25d4a45a683c1068447a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 3336008766582960663, guid: d87afcbca1ba7a747b7d74012b55f275, type: 3}
   text: {fileID: 2121492184}
 --- !u!65 &222041793
@@ -14922,7 +14967,7 @@ GameObject:
   - component: {fileID: 768671173}
   - component: {fileID: 768671172}
   - component: {fileID: 768671171}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17511,6 +17556,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -6342206366215889733, guid: 53e9712a31ed97b41b73d0981868973d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.744
+      objectReference: {fileID: 0}
+    - target: {fileID: -6342206366215889733, guid: 53e9712a31ed97b41b73d0981868973d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: -5770634479784780433, guid: 53e9712a31ed97b41b73d0981868973d,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -17570,6 +17625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383353755243004527, guid: 53e9712a31ed97b41b73d0981868973d,
+        type: 3}
+      propertyPath: m_Name
+      value: Panel code
       objectReference: {fileID: 0}
     - target: {fileID: 5231362815219648064, guid: 53e9712a31ed97b41b73d0981868973d,
         type: 3}
@@ -17664,6 +17724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ecd98041239847a33145a29a67b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 636506564}
 --- !u!1001 &1284535503
 PrefabInstance:
@@ -22217,6 +22278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850f07715ca6d843944a6a67014cf2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
 --- !u!65 &1839287773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22945,7 +23007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1899201555
 Transform:
   m_ObjectHideFlags: 0
@@ -23331,6 +23393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e267928e04eb10f4c93b5bae7a36755c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 3336008766582960663, guid: 11bb108fa08848845a7fb1bd01e3379a, type: 3}
 --- !u!65 &1949773702
 BoxCollider:

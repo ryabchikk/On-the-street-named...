@@ -6,9 +6,8 @@ using UnityEngine.UI;
 //Скрипт для объекта который будет вызывать какуро
 //На объекте добавить триггер коллайдер в который нужно будет зайти чтобы начать
 
-public class TestBox : MonoBehaviour
+public class TestBox : InteractableBox
 {
-    public static TestBox testBox;
     [SerializeField] private GameObject board;               //В инспекторе сюда префаб доски
     [SerializeField] private Text text;
     private Player _player;
@@ -18,11 +17,11 @@ public class TestBox : MonoBehaviour
     
     private void Start()
     {
-        testBox = this;
         _player = Player.player;
         KakuroBox.Completed += OnKakuroCompleted;
         FlashDrive.Collected += OnFlashCollected;
         Lock.Completed += OnLockCompleted;
+        height = 18f;
     }
     
     private void OnTriggerStay(Collider other)
