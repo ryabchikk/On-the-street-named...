@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Click : MonoBehaviour
 {
-    public AudioSource myFx;
-	public AudioClip click;
+    [SerializeField] private AudioSource myFx;
+	[SerializeField] private AudioClip click;
 
-public void ClickSound() //событие нажатия кнопки
+	public void ClickSound() //событие нажатия кнопки
 	{
 		myFx.PlayOneShot(click);
 	}

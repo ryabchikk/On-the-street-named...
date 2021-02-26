@@ -21,7 +21,7 @@ public class TestBox : InteractableBox
         KakuroBox.Completed += OnKakuroCompleted;
         FlashDrive.Collected += OnFlashCollected;
         Lock.Completed += OnLockCompleted;
-        height = 18f;
+        hintHeight = 18f;
     }
     
     private void OnTriggerStay(Collider other)

@@ -11,7 +11,7 @@ public class KakuroBox : InteractableBox
     private void Awake()
     {
         kakuroBox = this;
-        height = 4f;
+        hintHeight = 4f;
     }
 
     private void OnTriggerStay(Collider other)

@@ -9,7 +9,7 @@ public class PanelCodeActivate : InteractableBox
 
     private void Start()
     {
-        height = 12f;
+        hintHeight = 12f;
     }
 
     private void OnTriggerStay(Collider other)

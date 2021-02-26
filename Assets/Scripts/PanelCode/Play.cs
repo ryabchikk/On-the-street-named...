@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Play : MonoBehaviour
 {
-    [SerializeField]
-    AudioSource sound;
+    [SerializeField] AudioSource sound;
     public void PlaySound()
     {
         sound.Play();

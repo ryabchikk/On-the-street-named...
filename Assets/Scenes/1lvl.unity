@@ -13499,8 +13499,9 @@ GameObject:
   - component: {fileID: 508810272}
   - component: {fileID: 508810271}
   - component: {fileID: 508810270}
+  - component: {fileID: 508810276}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13744,6 +13745,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508810268}
   m_CullTransparentMesh: 0
+--- !u!114 &508810276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508810268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e281f09be325c61468a7296da375806e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 508810269}
+  button: {fileID: 508810273}
 --- !u!1 &522991034
 GameObject:
   m_ObjectHideFlags: 0
@@ -14539,11 +14554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c245617a984f7444a73fd6130c18e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlock: 0
-  _InputField: {fileID: 2016997336}
+  inputField: {fileID: 2016997336}
   password: 0841
-  objectsOn: []
-  objectsOff: []
   error: "\u041E\u0428\u0418\u0411\u041A\u0410"
   errorColor: {r: 1, g: 0.009791803, b: 0, a: 1}
   success: "\u041F\u0410\u0420\u041E\u041B\u042C \u041F\u0420\u0418\u041D\u042F\u0422"
@@ -14553,10 +14565,8 @@ MonoBehaviour:
   offset: 59
   button: {fileID: 508810269}
   panel: {fileID: 1527111317}
-  buildButtons: 1
   allButtons: []
-  lock2D: {fileID: 1767546129}
-  unlock2D: {fileID: 1581785797}
+  placeholder: {fileID: 1589699033}
 --- !u!114 &636506567
 MonoBehaviour:
   m_ObjectHideFlags: 0
