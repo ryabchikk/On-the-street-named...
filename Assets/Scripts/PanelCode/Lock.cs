@@ -14,8 +14,6 @@ public class Lock : MinigameBoard
 	[Header("Messages")]
 	[SerializeField] private string error;
 	[SerializeField] private Color errorColor;
-	[SerializeField] private string success;
-	[SerializeField] private Color successColor;
 	[SerializeField] private string defaultText;
 	[SerializeField] private Color defaultColor;
 	[Header("Buttons")]
@@ -124,9 +122,9 @@ public class Lock : MinigameBoard
 	private void SetTextsArray()
 	{
 		_buttonTexts = new Queue<string>();
-		for (var i = 0; i < 9; i++)
+		for (var i = 1; i < 10; i++)
 		{
-			_buttonTexts.Enqueue((i + 1).ToString());
+			_buttonTexts.Enqueue(i.ToString());
 		}
 		
 		_buttonTexts.Enqueue("R");
