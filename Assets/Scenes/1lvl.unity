@@ -14054,8 +14054,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0636234, y: 0.30066726, z: 0.5548471}
-  m_Center: {x: 0.031810988, y: -0.3496664, z: 0.2225765}
+  m_Size: {x: 0.8347732, y: 6.160057, z: 0.55484706}
+  m_Center: {x: -0.08261579, y: 2.5800292, z: 0.22257675}
 --- !u!23 &542778787
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15004,7 +15004,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1.26
@@ -21776,8 +21776,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9866149, y: 1, z: 0.5293761}
-  m_Center: {x: 0.0066925716, y: 0, z: -0.18727}
+  m_Size: {x: 0.82173276, y: 5.7245255, z: 0.5293761}
+  m_Center: {x: -0.0757509, y: 2.3622615, z: -0.18726985}
 --- !u!23 &1760374729
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23210,7 +23210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899201555
 Transform:
   m_ObjectHideFlags: 0
@@ -23808,8 +23808,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999999, y: 0.29793817, z: 0.5435242}
-  m_Center: {x: 0, y: -0.35103092, z: -0.22823791}
+  m_Size: {x: 0.9999999, y: 5.940576, z: 0.5435242}
+  m_Center: {x: 1.3938279e-16, y: 2.4702883, z: -0.22823794}
 --- !u!23 &1953506601
 MeshRenderer:
   m_ObjectHideFlags: 0
