@@ -12,8 +12,9 @@ public class MainMenuScript : MonoBehaviour
     //интерфейс разрешения экрана
     public Dropdown _dropdown2;
     //массив разрешений экрана
-    Resolution[] _resolution;
-    void Start()
+    private Resolution[] _resolution;
+
+    private void Start()
     {
         _dropdown1.AddOptions(QualitySettings.names.ToList());
         _dropdown1.value = QualitySettings.GetQualityLevel();
@@ -39,7 +40,7 @@ public class MainMenuScript : MonoBehaviour
     public void OnClickStart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        LoadingManager.Load(1);
     }
     
     public void OnclickExit()

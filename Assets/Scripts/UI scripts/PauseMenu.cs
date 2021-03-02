@@ -8,27 +8,24 @@ public class PauseMenu: MonoBehaviour
 {
     [SerializeField]
     private GameObject pausePanel;
-    [SerializeField]
-    private GameObject player;
-    private ShootingScript ShootActivation;
+    private Player _player;
+    
     private void Start()
     {
-        ShootActivation = player.GetComponent<ShootingScript>();
+        _player = Player.player;
     }
     public void PauseOn()
     {
         pausePanel.SetActive(true);
-        Time.timeScale = 0;
-        ShootActivation.enabled = false;
+        _player.DeactivateShooting();
     }
     public void PauseOff() 
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1;
-        ShootActivation.enabled = true;
+        _player.ActivateShooting();
     }
     public void ExitMainMenu() 
     {
-        SceneManager.LoadScene(0);
+        LoadingManager.Load(0);
     }
 }
