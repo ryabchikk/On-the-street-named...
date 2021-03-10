@@ -21,6 +21,7 @@ public class Grabbing : MonoBehaviour
             Physics.Raycast(new Ray(gameObject.transform.position + new Vector3(0, -2, 0), gameObject.transform.forward), out hit, RayDistance);
             if (hit.rigidbody)
             {
+                hit.transform.eulerAngles = new Vector3(0f, 90f, 0f);
                 Grab = true;
             }
         }
@@ -40,7 +41,7 @@ public class Grabbing : MonoBehaviour
             {
                 hit.rigidbody.velocity = (offset.position - (hit.transform.position + hit.rigidbody.centerOfMass)) * grabPower;
                 hit.transform.eulerAngles = new Vector3(0f, 90f, 0f);
-                hit.rigidbody.freezeRotation = true;
+                //hit.rigidbody.freezeRotation = true;
             }
         }
     }
