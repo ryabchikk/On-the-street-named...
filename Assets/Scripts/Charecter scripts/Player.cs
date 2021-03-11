@@ -20,10 +20,11 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void DeactivateShooting()
+    public void DeactivateShooting(bool stopTime = true)
     {
         shooting.enabled = false;
-        Time.timeScale = 0;
+        if(stopTime)
+            Time.timeScale = 0;
     }
 
     public void ApplyDamage(int amount) => health.AddDamage(amount);

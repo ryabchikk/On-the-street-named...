@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
+    [SerializeField] private Image[] Lives;
+    [SerializeField] private GameObject deathScreen;
     private int _health = 3;
-    [SerializeField] public Image[] Lives;
     private int _countLive;
 
     private void Start()
@@ -36,6 +34,10 @@ public class HealthController : MonoBehaviour
             _health += amount;
     }
 
-    private void Die() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    private void Die()
+    {
+        Player.player.DeactivateShooting(false);
+        deathScreen.SetActive(true);
+    }
 }
 

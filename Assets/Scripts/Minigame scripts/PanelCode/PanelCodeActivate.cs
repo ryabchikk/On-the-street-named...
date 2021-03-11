@@ -12,9 +12,9 @@ public class PanelCodeActivate : InteractableBox
         hintHeight = 12f;
     }
 
-    private void OnTriggerStay(Collider other)
+    protected override void OnInteraction()
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown("e"))
-            board.SetActive(true);
+        board.SetActive(true);
+        isAlreadyUsed = true;
     }
 }

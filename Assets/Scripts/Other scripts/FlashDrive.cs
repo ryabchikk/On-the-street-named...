@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class FlashDrive : InteractableBox
 {
     public static event Action Collected;
 
-    private void OnTriggerStay(Collider other)
+    private static void OnCollected() => Collected?.Invoke();
+
+    protected override void OnInteraction()
     {
-        if (!other.CompareTag("Player") || !Input.GetKey("e")) return;
         OnCollected();
         Destroy(gameObject);
-    }
-
-    private static void OnCollected()
-    {
-        Collected?.Invoke();
     }
 }

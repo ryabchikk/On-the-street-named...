@@ -12,16 +12,14 @@ public class KakuroBox : InteractableBox
     {
         kakuroBox = this;
         hintHeight = 4f;
+        isAlreadyUsed = false;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player") && Input.GetKey("e"))
-            Instantiate(board);
-    }
+    public void OnCompleted() => Completed?.Invoke();
 
-    public void OnCompleted()
+    protected override void OnInteraction()
     {
-        Completed?.Invoke();
+        Instantiate(board);
+        isAlreadyUsed = true;
     }
 }

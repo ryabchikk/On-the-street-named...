@@ -203,7 +203,8 @@ MonoBehaviour:
 
     5 .....
 
-    6 -....
+    6
+    -....
 
     7 --...
 
@@ -1084,6 +1085,7 @@ RectTransform:
   - {fileID: 88375635}
   - {fileID: 366142242}
   - {fileID: 811155484}
+  - {fileID: 444809279}
   m_Father: {fileID: 2097305777}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2615,6 +2617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b81ad326a25d4a45a683c1068447a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReusable: 1
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 3336008766582960663, guid: d87afcbca1ba7a747b7d74012b55f275, type: 3}
   text: {fileID: 2121492184}
@@ -8480,6 +8483,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c70461d742fc614486cb71de422136b, type: 3}
+--- !u!1 &444809278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444809279}
+  - component: {fileID: 444809282}
+  - component: {fileID: 444809281}
+  - component: {fileID: 444809280}
+  m_Layer: 0
+  m_Name: Death screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &444809279
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444809278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 59600607}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00048828, y: -0.000030518}
+  m_SizeDelta: {x: 1268, y: 633.9999}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &444809280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444809278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b768e25394136924bb995b3f82d23bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+--- !u!114 &444809281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444809278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bb318dfb077002847ab80e3c53819c07, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &444809282
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444809278}
+  m_CullTransparentMesh: 0
 --- !u!1001 &465021073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18013,6 +18104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ecd98041239847a33145a29a67b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 636506564}
 --- !u!1001 &1284535503
@@ -19058,10 +19150,10 @@ MonoBehaviour:
   m_Text: "\u0412 1930-40-\u0445 \u0433\u043E\u0434\u0430\u0445 \u043F\u043E\u0434
     \u043F\u0441\u0435\u0432\u0434\u043E\u043D\u0438\u043C\u043E\u043C \u0420\u0430\u043C\u0437\u0430\u0439
     \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u043B
-    \u0432 \u041A\u0438\u0442\u0430\u0435, \u042F\u043F\u043E\u043D\u0438\u0438. \u0420\u0438\u0445\u0430\u0440\u0434\u0443
-    \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u0442\u0430\u0442\u044C \u0432\u0435\u0434\u0443\u0449\u0438\u043C
-    \xAB\u043D\u0435\u043C\u0435\u0446\u043A\u0438\u043C\xBB \u0436\u0443\u0440\u043D\u0430\u043B\u0438\u0441\u0442\u043E\u043C
-    \u0432 \u042F\u043F\u043E\u043D\u0438\u0438.\r\n\r\n\u041D\u0430\u043A\u0430\u043D\u0443\u043D\u0435
+    \u0432 \u041A\u0438\u0442\u0430\u0435, \u042F\u043F\u043E\u043D\u0438\u0438.
+    \u0420\u0438\u0445\u0430\u0440\u0434\u0443 \u0443\u0434\u0430\u043B\u043E\u0441\u044C
+    \u0441\u0442\u0430\u0442\u044C \u0432\u0435\u0434\u0443\u0449\u0438\u043C \xAB\u043D\u0435\u043C\u0435\u0446\u043A\u0438\u043C\xBB
+    \u0436\u0443\u0440\u043D\u0430\u043B\u0438\u0441\u0442\u043E\u043C \u0432 \u042F\u043F\u043E\u043D\u0438\u0438.\r\n\r\n\u041D\u0430\u043A\u0430\u043D\u0443\u043D\u0435
     \u0432\u043E\u0439\u043D\u044B \u043E\u043D \u0434\u0430\u0436\u0435 \u0437\u0430\u043D\u044F\u043B
     \u043F\u043E\u0441\u0442 \u043F\u0440\u0435\u0441\u0441-\u0430\u0442\u0442\u0430\u0448\u0435
     \u0433\u0435\u0440\u043C\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0441\u043E\u043B\u044C\u0441\u0442\u0432\u0430
@@ -20238,6 +20330,7 @@ MonoBehaviour:
   - {fileID: 1781356626}
   - {fileID: 1694925631}
   - {fileID: 1043566508}
+  deathScreen: {fileID: 444809278}
 --- !u!82 &1649435713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22719,6 +22812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850f07715ca6d843944a6a67014cf2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
 --- !u!65 &1839287773
 BoxCollider:
@@ -23448,7 +23542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899201555
 Transform:
   m_ObjectHideFlags: 0
@@ -23875,6 +23969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e267928e04eb10f4c93b5bae7a36755c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
   board: {fileID: 3336008766582960663, guid: 11bb108fa08848845a7fb1bd01e3379a, type: 3}
 --- !u!65 &1949773702

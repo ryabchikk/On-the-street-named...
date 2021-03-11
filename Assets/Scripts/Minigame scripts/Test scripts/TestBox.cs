@@ -23,24 +23,20 @@ public class TestBox : InteractableBox
         Lock.Completed += OnLockCompleted;
         hintHeight = 18f;
     }
-    
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player") && Input.GetKey("e"))
-        {
-            if (_flashCollected && _kakuroCompleted && _lockCompleted)
-                StartTest();
-            else
-                Debug.Log("TODO добавить сообщение о том, что не все пройдено");
-        }
-            
-    }
 
     private void OnFlashCollected() => _flashCollected = true;
 
     private void OnKakuroCompleted() => _kakuroCompleted = true;
 
     private void OnLockCompleted() => _lockCompleted = true;
+
+    protected override void OnInteraction()
+    {
+        if (_flashCollected && _kakuroCompleted && _lockCompleted)
+            StartTest();
+        else
+            Debug.Log("TODO добавить сообщение о том, что не все пройдено");
+    }
 
     private void StartTest()
     {
