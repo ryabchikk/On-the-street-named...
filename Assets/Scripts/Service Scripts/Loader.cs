@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Loader : MonoBehaviour
 {
     [SerializeField] private LoadingSlider slider;
-    [SerializeField] private float loadingDelay; //Можно убрать
+    [SerializeField] private GameObject continueButton;
     private AsyncOperation _loading;
 
     private void Start()
@@ -36,15 +36,12 @@ public class Loader : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Waiting delay");
-        if(newSceneIndex != 0)
-            yield return new WaitForSeconds(loadingDelay);
-        
-        ActivateScene();
+        Debug.Log("Waiting");
+        continueButton.SetActive(true);
     }
 
     //Можно назначить на кнопку
-    private void ActivateScene()
+    public void ActivateScene()
     {
         Debug.Log("Activated");
         _loading.allowSceneActivation = true;

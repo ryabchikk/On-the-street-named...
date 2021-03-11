@@ -17,5 +17,7 @@ public class LoadingSlider : MonoBehaviour
     {
         if(_loading != null)
             slider.value = _loading.progress;
+        if (_loading.progress >= 0.9f)
+            slider.value = 1;
     }
 }

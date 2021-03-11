@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 
+[ExecuteInEditMode]
 public class Cheats : MonoBehaviour
 {
     [SerializeField] private GameObject ladder;
@@ -15,19 +16,17 @@ public class Cheats : MonoBehaviour
     {
         _cheatsOn = true;
     }
-#endif
-    
-    
+
     private void Update()
     {
         if (_cheatsOn == false) return;
-        
-        if (Input.GetKeyDown("l"))
+
+        if (Input.GetKeyDown("d"))
             Instantiate(ladder);
         if(Input.GetKeyDown("f")) 
             fpsMeter.SetActive(fpsMeter.activeInHierarchy == false);
     }
-
+#endif
     //TODO
     private UnityAction ParseCommand(string command)
     {
