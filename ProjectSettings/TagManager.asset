@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Board
   - InfoPanel
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Terrain
-  - 
+  - Fast enemy target
   - 
   - 
   - 

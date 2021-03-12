@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,10 +7,15 @@ public class FPSMeter : MonoBehaviour
 {
     [SerializeField] private Text text;
 
-    private void Start()
+    private void OnEnable()
     {
         DontDestroyOnLoad(gameObject);
         StartCoroutine(CountFps());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(CountFps());
     }
 
     private IEnumerator CountFps()
