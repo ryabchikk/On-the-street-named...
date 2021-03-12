@@ -2617,8 +2617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b81ad326a25d4a45a683c1068447a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReusable: 1
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
+  isReusable: 1
   board: {fileID: 3336008766582960663, guid: d87afcbca1ba7a747b7d74012b55f275, type: 3}
   text: {fileID: 2121492184}
 --- !u!65 &222041793
@@ -18103,8 +18103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ecd98041239847a33145a29a67b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
+  isReusable: 0
   board: {fileID: 636506564}
 --- !u!1001 &1284535503
 PrefabInstance:
@@ -22811,8 +22811,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850f07715ca6d843944a6a67014cf2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
+  isReusable: 0
 --- !u!65 &1839287773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23541,7 +23541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1899201555
 Transform:
   m_ObjectHideFlags: 0
@@ -23968,8 +23968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e267928e04eb10f4c93b5bae7a36755c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReusable: 0
   hint: {fileID: 1721253218753648808, guid: 0308b002664d0884c847d0bc762fe496, type: 3}
+  isReusable: 0
   board: {fileID: 3336008766582960663, guid: 11bb108fa08848845a7fb1bd01e3379a, type: 3}
 --- !u!65 &1949773702
 BoxCollider:

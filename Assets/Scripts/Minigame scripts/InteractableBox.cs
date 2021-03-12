@@ -1,18 +1,11 @@
 ﻿using UnityEngine;
 
-public abstract class InteractableBox : MonoBehaviour
+public abstract class InteractableBox : HintCreatorBase
 {
     [SerializeField] protected bool isReusable;
-    [SerializeField] private GameObject hint;
-    private GameObject _hint;
     protected float hintHeight = 3f;
     protected bool isAlreadyUsed;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            _hint = Instantiate(hint, transform.position + Vector3.up * hintHeight, Quaternion.identity);
-    }
+    private GameObject _hint;
 
     private void OnTriggerStay(Collider other)
     {
@@ -21,9 +14,20 @@ public abstract class InteractableBox : MonoBehaviour
                 OnInteraction();
     }
 
-    private void OnTriggerExit(Collider other) => Destroy(_hint);
+    private void OnDestroy()
+    {
+        Destroy(_hint);
+    }
 
-    private void OnDestroy() => Destroy(_hint);
+    protected override void OnEnter()
+    {
+        _hint = Instantiate(hint, transform.position + Vector3.up * hintHeight, Quaternion.identity);
+    }
+
+    protected override void OnExit()
+    {
+        Destroy(_hint);
+    }
 
     protected abstract void OnInteraction();
 }
