@@ -1,0 +1,8 @@
+activate/deactivate: включает/выключает:
+		ladder: лестницу
+		fps: счетчик фпс
+		enemies/spawns: спавны врагов
+kill: убивает:
+		self/player: игрока
+		enemy/enemies: всех врагов на карте
+teleport пока что не работает

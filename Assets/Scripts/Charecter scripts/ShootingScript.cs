@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 //Поставить врагу тег Enemy
 //Скрипт в объект игрока
@@ -39,7 +37,7 @@ public class ShootingScript : MonoBehaviour
         StartCoroutine(DrawLaser(hit));
         if (hit.collider.CompareTag("Enemy")) 
         {
-            Destroy(hit.collider.gameObject);
+            hit.collider.gameObject.SendMessage("Die");
             Debug.Log("popal");
         }
     }

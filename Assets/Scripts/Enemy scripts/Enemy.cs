@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
@@ -45,5 +43,10 @@ public class Enemy : MonoBehaviour
         _player.ApplyDamage(1);
         yield return new WaitForSeconds(5);
         isHitCooldown = false;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

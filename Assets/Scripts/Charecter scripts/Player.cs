@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +22,11 @@ public class Player : MonoBehaviour
         shooting.enabled = false;
         if(stopTime)
             Time.timeScale = 0;
+    }
+
+    public void Teleport(Vector3 place)
+    {
+        transform.Translate(place);
     }
 
     public void ApplyDamage(int amount) => health.AddDamage(amount);
