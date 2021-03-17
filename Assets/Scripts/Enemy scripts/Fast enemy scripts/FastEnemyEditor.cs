@@ -30,13 +30,18 @@ public class FastEnemyEditor : Editor
         EditorGUILayout.PropertyField(_parentProperty);
         EditorGUILayout.PropertyField(_targets);
 
-        var sceneTargets = _parent.GetComponentsInChildren<Transform>().Skip(2).ToArray();
-        if (sceneTargets.Count() != _targets.arraySize)
+        var sceneTargets = _parent.GetComponentsInChildren<Transform>()
+            .Skip(2)
+            .Where(x => x is RectTransform == false)
+            .ToArray();
+        
+        if (sceneTargets.Length != _targets.arraySize)
         {
             _targets.ClearArray();
 
             for (int i = 0; i < sceneTargets.Length; i++)
             {
+                if (sceneTargets[i] is RectTransform) continue;
                 _targets.InsertArrayElementAtIndex(i);
                 _targets.GetArrayElementAtIndex(i).objectReferenceValue = sceneTargets[i];
             }
