@@ -37,7 +37,7 @@ public class ShootingScript : MonoBehaviour
         StartCoroutine(DrawLaser(hit));
         if (hit.collider.CompareTag("Enemy")) 
         {
-            hit.collider.gameObject.SendMessage("Die");
+            hit.collider.gameObject.SendMessage("ApplyDamage", 1);
             Debug.Log("popal");
         }
     }

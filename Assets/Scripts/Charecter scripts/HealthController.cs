@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthController : MonoBehaviour
+public class HealthController : Damageable
 {
+    public override int Health => _health;
+    public override event Action<int> DamageApplied;
     [SerializeField] private Image[] Lives;
     [SerializeField] private GameObject deathScreen;
     private int _health = 3;
@@ -13,7 +16,7 @@ public class HealthController : MonoBehaviour
         _countLive = Lives.Length - 1;
     }
 
-    public void AddDamage(int amount)
+    public override void ApplyDamage(int amount)
     {
         if (_health - amount <= 0) 
         { 
@@ -24,17 +27,12 @@ public class HealthController : MonoBehaviour
             _health -= 1;
             Lives[_countLive].enabled = false;
             _countLive--;
+            DamageApplied?.Invoke(amount);
         }
             
     }
-    
-    public void AddHeal(int amount)
-    {
-        if (_health + amount <= 3)
-            _health += amount;
-    }
 
-    private void Die()
+    public override void Die()
     {
         Player.player.DeactivateShooting(false);
         deathScreen.SetActive(true);

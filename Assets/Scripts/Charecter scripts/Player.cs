@@ -29,7 +29,5 @@ public class Player : MonoBehaviour
         transform.Translate(place);
     }
 
-    public void ApplyDamage(int amount) => health.AddDamage(amount);
-
-    public void ApplyHealing(int amount) => health.AddHeal(amount);
+    public void ApplyDamage(int amount) => health.ApplyDamage(amount);
 }
