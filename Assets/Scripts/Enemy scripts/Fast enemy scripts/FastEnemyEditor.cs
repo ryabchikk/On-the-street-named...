@@ -32,7 +32,7 @@ public class FastEnemyEditor : Editor
 
         var sceneTargets = _parent.GetComponentsInChildren<Transform>()
             .Skip(2)
-            .Where(x => x is RectTransform == false)
+            .Where(x => x is RectTransform == false && x.gameObject.CompareTag("EditorOnly") == false)
             .ToArray();
         
         if (sceneTargets.Length != _targets.arraySize)

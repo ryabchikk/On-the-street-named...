@@ -27,7 +27,6 @@ public class FastEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_isOnCooldown);
         if (_isOnCooldown) return;
 
         Vector3 direction = _current.position - transform.position;
@@ -53,7 +52,6 @@ public class FastEnemy : MonoBehaviour
     //уводит врага в кулдаун
     private IEnumerator Cooldown()
     {
-        Debug.Log("Cooldown started");
         _isOnCooldown = true;
         yield return new WaitForSeconds(movingCooldown);
         _isOnCooldown = false;
@@ -62,7 +60,6 @@ public class FastEnemy : MonoBehaviour
     //меняет текущую цель
     private void ChangeTarget()
     {
-        Debug.Log("Target changed");
         _targets.MoveNext();
         _current = (Transform)_targets.Current;
     }

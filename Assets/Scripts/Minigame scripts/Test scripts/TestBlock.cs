@@ -29,6 +29,7 @@ public class TestBlock : MonoBehaviour
 
     private void Click()
     {
+        Debug.Log("d");
         if (isCorrect)
             _board.NextQuestion();
         else

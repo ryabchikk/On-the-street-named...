@@ -1,23 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using UnityEngine.Serialization;
 
 public class TestBoard : MinigameBoard
 {
     
     [SerializeField] private GameObject block;
     [SerializeField] private Transform parent;
+    protected int questionsCount = 4;
+    protected List<string>[] answersAll;
+    protected IEnumerator<string> questions;
     private readonly TestBlock[] _blocks = new TestBlock[5];
-    private const int QuestionsCount = 4;
     private IEnumerator<string> _answersCurr;
-    private List<string>[] _answersAll;
-    private IEnumerator<string> _questions;
     private int _currentQuestion;
 
-    void Start()
+    protected virtual void Start()
     {
         SetQnA();
         InitBlocks();
@@ -29,7 +27,7 @@ public class TestBoard : MinigameBoard
     //В префабе Block можно поменять размер и расположение кнопки чтобы это выглядело нормально
     //Расположение и размер всех кнопок зависит от положения и размера кнопки в префабе
     //Инициализация кнопок, заполнение массива кнопок
-    private void InitBlocks()
+    protected void InitBlocks()
     {
         var rt = block.GetComponent<RectTransform>();
         for (int i = 0; i < 5; i++)
@@ -44,19 +42,21 @@ public class TestBoard : MinigameBoard
 
         //Костыль, без этого не загружается текст
         _blocks[4].Last();
+        Debug.Log("Init");
     }
 
     
-    private void SetQnA()
+    protected virtual void SetQnA()
     {
-        _answersAll = new[]
+        Debug.Log("Set");
+        answersAll = new[]
         {
             new List<string> { "Япония", "Германия", "Узбекистан", "Азербайджан" },
             new List<string> { "Инженер", "Разведчик", "Военный врач", "Журналист" },
             new List<string> { "Джек", "Дора", "Кент", "Рамзай" },
             new List<string> { "1941", "1944", "Не присвоено", "1964" },
         };
-        _questions = new List<string> { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
+        questions = new List<string> { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
     }
 
     #endregion
@@ -65,11 +65,11 @@ public class TestBoard : MinigameBoard
     
     public void NextQuestion()
     {
-        if (_currentQuestion < QuestionsCount)
+        if (_currentQuestion < questionsCount)
         {
-            _answersCurr = _answersAll[_currentQuestion].GetEnumerator();
-            _questions.MoveNext();
-            _blocks[0].text.text = _questions.Current;
+            _answersCurr = answersAll[_currentQuestion].GetEnumerator();
+            questions.MoveNext();
+            _blocks[0].text.text = questions.Current;
 
 
             foreach (var b in _blocks)
@@ -95,14 +95,14 @@ public class TestBoard : MinigameBoard
     }
     
     //Заглушка
-    public void Lose()
+    public virtual void Lose()
     {
         Debug.Log("Lose");
         Destroy(gameObject);
     }
 
     //Заглушка
-    private void Success()
+    protected virtual void Success()
     {
         Debug.Log("Success");
         Destroy(gameObject);
