@@ -22,9 +22,14 @@ public class CharacterMechanics : MonoBehaviour
     }
 
     void Update()
-    {
-        CharacterMove();
+    { 
+        /*if (Input.anyKey == false)
+        {
+            return;
+        }*/
         GamingGravity();
+        
+        CharacterMove();
     }
     private void CharacterMove() 
     {

@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     public void Teleport(Vector3 place)
     {
-        transform.Translate(place);
+        transform.position = place;
     }
 
     public void ApplyDamage(int amount) => health.ApplyDamage(amount);
