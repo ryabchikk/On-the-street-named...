@@ -42,13 +42,11 @@ public class TestBoard : MinigameBoard
 
         //Костыль, без этого не загружается текст
         _blocks[4].Last();
-        Debug.Log("Init");
     }
 
     
     protected virtual void SetQnA()
     {
-        Debug.Log("Set");
         answersAll = new[]
         {
             new List<string> { "Япония", "Германия", "Узбекистан", "Азербайджан" },

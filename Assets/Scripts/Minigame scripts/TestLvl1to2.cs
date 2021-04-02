@@ -6,6 +6,7 @@ public class TestLvl1to2 : TestBoard
 {
     [SerializeField] private string question;
     [SerializeField] private string[] answers;
+    private Waypoint _waypoint;
 
     protected override void Start() { }
 
@@ -16,9 +17,13 @@ public class TestLvl1to2 : TestBoard
         InitBlocks();
     }
 
+    public void Init(Waypoint wp)
+    {
+        _waypoint = wp;
+    }
+
     protected override void SetQnA()
     {
-        Debug.Log("Set");
         answersAll = new[]
         {
             new List<string>(answers)
@@ -35,7 +40,7 @@ public class TestLvl1to2 : TestBoard
 
     protected override void Success()
     {
-        Time.timeScale = 1;
-        base.Success();
+        _waypoint.NextQuestion();
+        gameObject.SetActive(false);
     }
 }

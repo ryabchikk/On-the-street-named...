@@ -21,6 +21,7 @@ public abstract class InteractableBox : HintCreatorBase
 
     protected override void OnEnter()
     {
+        if(isReusable || !isReusable && !isAlreadyUsed)
         _hint = Instantiate(hint, transform.position + Vector3.up * hintHeight, Quaternion.identity);
     }
 
