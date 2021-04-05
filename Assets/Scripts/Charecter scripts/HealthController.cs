@@ -43,7 +43,7 @@ public class HealthController : Damageable
         {
             gameObject.AddComponent<CapsuleCollider>();
             var rb = gameObject.AddComponent<Rigidbody>();
-            rb.AddForce(Vector3.up * 20f, ForceMode.Impulse);
+            rb.AddForce(Vector3.forward * 20f, ForceMode.Impulse);
         }
         deathScreen.SetActive(true);
     }
