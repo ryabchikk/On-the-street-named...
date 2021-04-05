@@ -102,7 +102,7 @@ public class TestBoard : MinigameBoard
     //Заглушка
     protected virtual void Success()
     {
-        Debug.Log("Success");
+        LoadingManager.Load(4);
         Destroy(gameObject);
     }
     
