@@ -39,8 +39,7 @@ public class Loader : MonoBehaviour
         Debug.Log("Waiting");
         continueButton.SetActive(true);
     }
-
-    //Можно назначить на кнопку
+    
     public void ActivateScene()
     {
         Debug.Log("Activated");

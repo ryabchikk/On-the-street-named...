@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
+    public event Action Completed;
     [SerializeField] private GameObject[] test;
     private IEnumerator<GameObject> _enumerator;
 
@@ -13,7 +15,6 @@ public class Waypoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Time.timeScale = 0;
         NextQuestion();
     }
 
@@ -27,7 +28,7 @@ public class Waypoint : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            Debug.Log("end");
+            Completed?.Invoke();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestLvl1to2 : TestBoard
 {
@@ -8,6 +9,15 @@ public class TestLvl1to2 : TestBoard
     [SerializeField] private string[] answers;
     private Waypoint _waypoint;
 
+    protected new void Awake()
+    {
+        Time.timeScale = 0;
+    }
+
+    protected new void OnDestroy()
+    {
+        Time.timeScale = 1;
+    }
     protected override void Start() { }
 
     private void OnEnable()
@@ -34,7 +44,7 @@ public class TestLvl1to2 : TestBoard
 
     public override void Lose()
     {
-        Time.timeScale = 1;
+        SceneManager.LoadScene(4);
         base.Lose();
     }
 
