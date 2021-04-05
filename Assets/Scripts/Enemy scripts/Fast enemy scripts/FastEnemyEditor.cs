@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿/*using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
@@ -49,4 +49,4 @@ public class FastEnemyEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/
