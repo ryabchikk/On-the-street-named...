@@ -35,6 +35,16 @@ public class HealthController : Damageable
     public override void Die()
     {
         Player.player.DeactivateShooting(false);
+        var cc = GetComponent<CharacterController>();
+        cc.detectCollisions = false;
+        cc.enabled = false;
+        GetComponentInChildren<ParticleSystem>().Stop();
+        if(GetComponent<CapsuleCollider>() == null)
+        {
+            gameObject.AddComponent<CapsuleCollider>();
+            var rb = gameObject.AddComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * 20f, ForceMode.Impulse);
+        }
         deathScreen.SetActive(true);
     }
 }
