@@ -8,6 +8,7 @@ public class SwitchSlides : MonoBehaviour
     [SerializeField] private GameObject[] _slides;
     [SerializeField] private GameObject _nextButton;
     [SerializeField] private GameObject _prevButton;
+    [SerializeField] private GameObject _slidesBoard;
     public int _count; 
     void Start(){}
     public void NextSlide() 
@@ -40,6 +41,10 @@ public class SwitchSlides : MonoBehaviour
             _nextButton.SetActive(true);
         }
         Debug.Log(_count);
+    }
+    public void CloseSlides() 
+    {
+        _slidesBoard.SetActive(false);
     }
     public void StartGame() 
     {

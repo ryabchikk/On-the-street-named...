@@ -12,12 +12,6 @@ public class Grabbing : MonoBehaviour
     private int count = 0;
     public Transform offset;
     RaycastHit hit;   //луч
-
-
-    private void Start()
-    {
-        count = 0;
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -25,23 +19,9 @@ public class Grabbing : MonoBehaviour
             Physics.Raycast(new Ray(gameObject.transform.position + new Vector3(0, -2, 0), gameObject.transform.forward), out hit, RayDistance);
             if (hit.rigidbody)
             {
-                count++;
-                switch (count) 
-                {
-                    case 1:
-                        Grab = true;
-                        break;
-                    case 2:
-                        Grab = false;
-                        count = 0;
-                        break;
-                    default:
-                        count = 0;
-                        break;
-                }
-                //hit.transform.eulerAngles = new Vector3(0f, 90f, 0f);
-                //Grab = true;
+               Grab = true;      
             }
+            Debug.Log(count);
         }
         //если нажата левая  кнопка мыши
         if (Input.GetMouseButtonDown(0))
@@ -68,7 +48,6 @@ public class Grabbing : MonoBehaviour
         if (hit.rigidbody)
         {
             hit.rigidbody.velocity = gameObject.transform.forward * throwPower;
-            hit.rigidbody.freezeRotation = false;
         }
     }
 }
