@@ -10,7 +10,7 @@ public class RegularSpawn : MonoBehaviour
         yield return new WaitForSeconds(1);
         foreach (var x in spawns)
         {
-            x.StartSpawning(10);
+            x.StartSpawning(30);
         }
     }
 }
