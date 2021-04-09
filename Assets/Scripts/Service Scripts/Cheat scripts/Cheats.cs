@@ -13,7 +13,7 @@ public class Cheats : MonoBehaviour
     private CommandParser _parser;
     private Player _player;
 
-#if DEBUG
+//#if DEBUG
     private void Start()
     {
         _cheatsOn = true;
@@ -29,7 +29,7 @@ public class Cheats : MonoBehaviour
         };
         _parser = new CommandParser(objects, positions);
     }
-#endif
+//#endif
     
     private void Update()
     {
@@ -130,6 +130,8 @@ public class CommandParser : IDisposable
                 return Kill(words[1]);
             case "teleport":
                 return Teleport(words[1]);
+            case "loadlevel":
+                return LoadLevel(words[1]);
             default:
                 throw new ArgumentException("Invalid command");
         }
@@ -187,6 +189,27 @@ public class CommandParser : IDisposable
         }
         else
             throw new ArgumentException("Invalid place");
+    }
+
+    private Action LoadLevel(string level)
+    {
+        switch (level.ToLower())
+        {
+            case "main menu":
+            case "mainmenu":
+                return () => { LoadingManager.Load(0); };
+                break;
+            case "1":
+                return () => { LoadingManager.Load(3); };
+                break;
+            case "2":
+                return () => { LoadingManager.Load(4); };
+                break;
+            default:
+                throw new ArgumentException();
+        }
+        
+        
     }
 
     public void Dispose()
