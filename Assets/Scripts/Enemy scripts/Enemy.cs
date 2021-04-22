@@ -16,28 +16,33 @@ public class Enemy : Damageable
     private Transform _enemy;
     private bool _isHitCooldown;
     private Transform _playerTransform;
-
+    private Vector3 _defaultPosition;
     private void Start()
     {
         _player = Player.player;
         _playerTransform = _player.gameObject.transform;
+        _defaultPosition = transform.position;
     }
     
     private void Update()
     {
+        if (_isHitCooldown) 
+        {
+            return;
+        }
         distance = (transform.position - _playerTransform.position).sqrMagnitude;
         if (distance > sqrRadius)
         {
-            nav.enabled = false;
+            nav.SetDestination(_defaultPosition);
         }
         else 
         {
             nav.enabled = true;
             nav.SetDestination(_playerTransform.position);
         }
-        if (distance < sqrAttackDistance && !_isHitCooldown) 
-        {
-            nav.enabled = false;
+        if (distance < sqrAttackDistance) 
+        {   
+            nav.SetDestination(transform.position);
             StartCoroutine(nameof(Hit));
         } 
     }
