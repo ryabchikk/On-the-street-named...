@@ -197,14 +197,12 @@ public class CommandParser : IDisposable
         {
             case "main menu":
             case "mainmenu":
-                return () => { LoadingManager.Load(0); };
-                break;
+                return () => { LoadingManager.Load(0); Time.timeScale = 1;
+                };
             case "1":
-                return () => { LoadingManager.Load(3); };
-                break;
+                return () => { LoadingManager.Load(3); Time.timeScale = 1;};
             case "2":
-                return () => { LoadingManager.Load(4); };
-                break;
+                return () => { LoadingManager.Load(4); Time.timeScale = 1;};
             default:
                 throw new ArgumentException();
         }

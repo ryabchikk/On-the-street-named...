@@ -9,7 +9,7 @@ public class FastEnemyEditor : Editor
 {
     private SerializedProperty _parentProperty;
     private GameObject _parent;
-    private SerializedProperty _targets, _speed, _movingCooldown;
+    private SerializedProperty _targets;
 
     private void OnEnable()
     {
@@ -17,19 +17,12 @@ public class FastEnemyEditor : Editor
 
         _parent = (GameObject)_parentProperty.objectReferenceValue;
         _targets = serializedObject.FindProperty("targets");
-        _speed = serializedObject.FindProperty("speed");
-        _movingCooldown = serializedObject.FindProperty("movingCooldown");
     }
 
     public override void OnInspectorGUI()
     {
         if (EditorApplication.isPlaying) return;
-        Debug.Log("Editor upd");
-        serializedObject.Update();
-        EditorGUILayout.PropertyField(_speed);
-        EditorGUILayout.PropertyField(_movingCooldown);
-        EditorGUILayout.PropertyField(_parentProperty);
-        EditorGUILayout.PropertyField(_targets);
+        DrawDefaultInspector();
 
         var sceneTargets = _parent.GetComponentsInChildren<Transform>()
             .Skip(2)

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Lock : MinigameBoard
 {
-	public static event Action Completed;
 	[Header("General")]
 	[SerializeField] private InputField inputField; // поле ввода текста
 	[SerializeField] private string password; // текущий пароль замка
+	[SerializeField] private PanelCodeActivate box;
 	[Header("Messages")]
 	[SerializeField] private string error;
 	[SerializeField] private Color errorColor;
@@ -136,8 +135,8 @@ public class Lock : MinigameBoard
 		placeholder.color = color;
 	}
 	
-	private static void OnCompleted()
+	private void OnCompleted()
 	{
-		Completed?.Invoke();
+		box.OnCompleted();
 	}
 }

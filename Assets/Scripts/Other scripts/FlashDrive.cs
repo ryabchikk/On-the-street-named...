@@ -2,13 +2,16 @@
 
 public class FlashDrive : InteractableBox
 {
-    public static event Action Collected;
+    public static FlashDrive drive;
 
-    private static void OnCollected() => Collected?.Invoke();
+    private void Awake()
+    {
+        drive = this;
+    }
 
     protected override void OnInteraction()
     {
-        OnCollected();
+        OnCompleted();
         Destroy(gameObject);
     }
 }

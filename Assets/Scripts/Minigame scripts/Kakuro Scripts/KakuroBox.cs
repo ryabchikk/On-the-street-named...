@@ -4,7 +4,6 @@ using UnityEngine;
 public class KakuroBox : InteractableBox
 {
     public static KakuroBox kakuroBox;
-    public static event Action Completed;
     [SerializeField] private GameObject board;
     private Player _player;
 
@@ -14,8 +13,6 @@ public class KakuroBox : InteractableBox
         hintHeight = 4f;
         isAlreadyUsed = false;
     }
-
-    public void OnCompleted() => Completed?.Invoke();
 
     protected override void OnInteraction()
     {

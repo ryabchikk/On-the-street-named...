@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +15,13 @@ public class TestBox : InteractableBox
     private bool _flashCollected;
     private bool _kakuroCompleted;
     private bool _lockCompleted;
-    
+
     private void Start()
     {
         _player = Player.player;
-        KakuroBox.Completed += OnKakuroCompleted;
-        FlashDrive.Collected += OnFlashCollected;
-        Lock.Completed += OnLockCompleted;
+        KakuroBox.kakuroBox.Completed += OnKakuroCompleted;
+        FlashDrive.drive.Completed += OnFlashCollected;
+        PanelCodeActivate.panelCode.Completed += OnLockCompleted;
         hintHeight = 18f;
     }
 

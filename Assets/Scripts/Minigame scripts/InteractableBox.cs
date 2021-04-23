@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public abstract class InteractableBox : HintCreatorBase
+public abstract class InteractableBox : HintCreatorBase, ICompleteable
 {
+    public event Action Completed;
     [SerializeField] protected bool isReusable;
     protected float hintHeight = 3f;
     protected bool isAlreadyUsed;
@@ -18,11 +20,17 @@ public abstract class InteractableBox : HintCreatorBase
     {
         Destroy(_hint);
     }
+    
+    public void OnCompleted()
+    {
+        Debug.Log($"{name} Completed");
+        Completed?.Invoke();
+    }
 
     protected override void OnEnter()
     {
         if(isReusable || !isReusable && !isAlreadyUsed)
-        _hint = Instantiate(hint, transform.position + Vector3.up * hintHeight, Quaternion.identity);
+            _hint = Instantiate(hint, transform.position + Vector3.up * hintHeight, Quaternion.identity);
     }
 
     protected override void OnExit()

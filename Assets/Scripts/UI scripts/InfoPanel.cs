@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour
@@ -12,9 +7,9 @@ public class InfoPanel : MonoBehaviour
 
     private void Start()
     {
-        FlashDrive.Collected += ActivateFirstText;
-        KakuroBox.Completed += ActivateSecondText;
-        Lock.Completed += ActivateThirdText;
+        FlashDrive.drive.Completed += ActivateFirstText;
+        KakuroBox.kakuroBox.Completed += ActivateSecondText;
+        PanelCodeActivate.panelCode.Completed += ActivateThirdText;
     }
 
     private void ActivateFirstText()
@@ -34,8 +29,8 @@ public class InfoPanel : MonoBehaviour
 
     private void OnDestroy()
     {
-        FlashDrive.Collected -= ActivateFirstText;
-        KakuroBox.Completed -= ActivateSecondText;
-        Lock.Completed -= ActivateThirdText;
+        FlashDrive.drive.Completed -= ActivateFirstText;
+        KakuroBox.kakuroBox.Completed -= ActivateSecondText;
+        PanelCodeActivate.panelCode.Completed -= ActivateThirdText;
     }
 }

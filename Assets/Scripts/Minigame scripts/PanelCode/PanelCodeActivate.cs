@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PanelCodeActivate : InteractableBox
 {
+    public static PanelCodeActivate panelCode;
     [SerializeField] private GameObject board;
 
-    private void Start()
+    private void Awake()
     {
+        panelCode = this;
         hintHeight = 12f;
     }
 
