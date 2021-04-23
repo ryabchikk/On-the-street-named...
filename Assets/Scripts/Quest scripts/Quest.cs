@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class Quest
@@ -18,16 +14,25 @@ public class Quest
     [SerializeField] public string name;
     [SerializeField] public string text;
     public MonoBehaviour target;
+    public bool completed;
     private ICompleteable _target;
+    private QuestDisplay _display;
 
     public void Init()
     {
         _target = (ICompleteable)target;
         _target.Completed += OnQuestCompleted;
+        completed = false;
+    }
+
+    public void SetDisplay(QuestDisplay display)
+    {
+        _display = display;
     }
 
     private void OnQuestCompleted()
     {
-        throw new NotImplementedException();
+        UpscreenNotification.notificator.Add("Журнал заданий обновлен");
+        completed = true;
     }
 }

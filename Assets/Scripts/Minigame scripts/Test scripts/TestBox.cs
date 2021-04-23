@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 //Скрипт для объекта который будет вызывать какуро
@@ -11,6 +8,7 @@ public class TestBox : InteractableBox
 {
     [SerializeField] private GameObject board;               //В инспекторе сюда префаб доски
     [SerializeField] private Text text;
+    [SerializeField] private Portal portal;
     private Player _player;
     private bool _flashCollected;
     private bool _kakuroCompleted;
@@ -23,6 +21,11 @@ public class TestBox : InteractableBox
         FlashDrive.drive.Completed += OnFlashCollected;
         PanelCodeActivate.panelCode.Completed += OnLockCompleted;
         hintHeight = 18f;
+    }
+
+    public void Success()
+    {
+        portal.Open();
     }
 
     private void OnFlashCollected() => _flashCollected = true;
@@ -42,7 +45,7 @@ public class TestBox : InteractableBox
     private void StartTest()
     {
         _player.DeactivateShooting();
-        Instantiate(board);
-        text.enabled=true;
+        Instantiate(board).GetComponent<TestBoard>().box = this;
+        text.enabled = true;
     }
 }

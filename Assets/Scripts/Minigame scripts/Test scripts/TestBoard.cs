@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TestBoard : MinigameBoard
 {
-    
+    public TestBox box;
     [SerializeField] private GameObject block;
     [SerializeField] private Transform parent;
     protected int questionsCount = 4;
@@ -102,7 +102,7 @@ public class TestBoard : MinigameBoard
     //Заглушка
     protected virtual void Success()
     {
-        LoadingManager.Load(4);
+        box.Success();
         Destroy(gameObject);
     }
     

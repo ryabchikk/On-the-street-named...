@@ -1,12 +1,10 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private HealthSliderBase primarySlider;
     [SerializeField] private HealthSliderBase secondarySlider;
-    private Damageable _target;
+    private IDamageable _target;
     private Transform _camera;
     private bool _slidersAreActive;
 
@@ -14,7 +12,7 @@ public class HealthBar : MonoBehaviour
     {
         _camera = Camera.main.transform;
 
-        _target = GetComponentInParent<Damageable>();
+        _target = GetComponentInParent<IDamageable>();
         
         primarySlider.Init(_target.Health);
         secondarySlider.Init(_target.Health);

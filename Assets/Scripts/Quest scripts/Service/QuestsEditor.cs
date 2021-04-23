@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -28,10 +27,8 @@ public class QuestsEditor : EditorWindow
             
             quest.state = EditorGUILayout.BeginFoldoutHeaderGroup(quest.state, quest.value.name);
             if(quest.state == false)
-            {
                 DrawRemoveButton(quest);
-            }
-            
+
             EditorGUILayout.EndHorizontal();
 
             if(quest.state)
@@ -75,3 +72,4 @@ public class Foldout<T>
         state = false;
     }
 }
+#endif

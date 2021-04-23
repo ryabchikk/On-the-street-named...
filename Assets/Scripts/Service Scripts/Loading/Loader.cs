@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
 {
@@ -32,17 +31,15 @@ public class Loader : MonoBehaviour
 
         while (_loading.progress < 0.9f)
         {
-            Debug.Log($"Loading {newSceneIndex}, {_loading.progress * 100}%");
             yield return null;
         }
 
-        Debug.Log("Waiting");
         continueButton.SetActive(true);
     }
     
     public void ActivateScene()
     {
-        Debug.Log("Activated");
         _loading.allowSceneActivation = true;
+        Time.timeScale = 1;
     }
 }

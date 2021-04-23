@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthController : Damageable
+public class HealthController : MonoBehaviour, IDamageable
 {
-    public override int Health => _health;
-    public override event Action<int> DamageApplied;
+    public int Health => _health;
+    public event Action<int> DamageApplied;
     [SerializeField] private Image[] Lives;
     [SerializeField] private GameObject deathScreen;
     private int _health = 3;
@@ -16,7 +16,7 @@ public class HealthController : Damageable
         _countLive = Lives.Length - 1;
     }
 
-    public override void ApplyDamage(int amount)
+    public void ApplyDamage(int amount)
     {
         if (_health - amount <= 0) 
         { 
@@ -32,7 +32,7 @@ public class HealthController : Damageable
             
     }
 
-    public override void Die()
+    public void Die()
     {
         Player.player.DeactivateShooting(false);
         var cc = GetComponent<CharacterController>();

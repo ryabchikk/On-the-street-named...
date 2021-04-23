@@ -7,30 +7,21 @@ public class InfoPanel : MonoBehaviour
 
     private void Start()
     {
-        FlashDrive.drive.Completed += ActivateFirstText;
-        KakuroBox.kakuroBox.Completed += ActivateSecondText;
-        PanelCodeActivate.panelCode.Completed += ActivateThirdText;
+        FlashDrive.drive.Completed += () => ActivateText(0);
+        KakuroBox.kakuroBox.Completed += () => ActivateText(1);
+        PanelCodeActivate.panelCode.Completed += () => ActivateText(2);
     }
 
-    private void ActivateFirstText()
+    private void ActivateText(int index)
     {
-        textBlocks[0].enabled = true;
+        UpscreenNotification.notificator.Add("Информационная панель обновлена");
+        textBlocks[index].enabled = true;
     }
 
-    private void ActivateSecondText()
-    {
-        textBlocks[1].enabled = true;
-    }
-
-    private void ActivateThirdText()
-    {
-        textBlocks[2].enabled = true;
-    }
-
-    private void OnDestroy()
+    /*private void OnDestroy()
     {
         FlashDrive.drive.Completed -= ActivateFirstText;
         KakuroBox.kakuroBox.Completed -= ActivateSecondText;
         PanelCodeActivate.panelCode.Completed -= ActivateThirdText;
-    }
+    }*/
 }

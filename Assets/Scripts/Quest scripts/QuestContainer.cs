@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestContainer : MonoBehaviour
 {
-    [ReadOnly, SerializeField] public List<Quest> quests = new List<Quest>();
+    [ReadOnly] public List<Quest> quests = new List<Quest>();
+    public static QuestContainer container;
 
-    private void Start()
+    private void Awake()
     {
+        container = this;
         foreach (var quest in quests)
-        {
             quest.Init();
-        }
     }
     
-#if UNITY_EDITOR
     public void Add(Quest quest)
     {
         quests.Add(quest);
@@ -27,6 +23,7 @@ public class QuestContainer : MonoBehaviour
         quests.Remove(quest);
     }
     
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (quests.Count == 0 || quests == null)

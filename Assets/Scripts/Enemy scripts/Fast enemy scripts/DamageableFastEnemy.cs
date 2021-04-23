@@ -3,13 +3,13 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DamageableFastEnemy : Damageable
+public class DamageableFastEnemy : MonoBehaviour, IDamageable
 {
-    public override int Health => health;
-    public override event Action<int> DamageApplied;
+    public int Health => health;
+    public event Action<int> DamageApplied;
     [SerializeField] private int health;
     
-    public override void ApplyDamage(int amount)
+    public void ApplyDamage(int amount)
     {
         if (amount < 0) return;
 
@@ -20,7 +20,7 @@ public class DamageableFastEnemy : Damageable
         DamageApplied?.Invoke(amount);
     }
 
-    public override void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }

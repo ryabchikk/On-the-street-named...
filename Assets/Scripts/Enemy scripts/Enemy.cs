@@ -3,15 +3,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : Damageable
+public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private float distance;
     [SerializeField] private float sqrRadius;
     [SerializeField] private float sqrAttackDistance;
     [SerializeField] private NavMeshAgent nav;
     [SerializeField] private int health;
-    public override int Health => health;
-    public override event Action<int> DamageApplied; 
+    public int Health => health;
+    public event Action<int> DamageApplied; 
     private Player _player;
     private Transform _enemy;
     private bool _isHitCooldown;
@@ -47,7 +47,7 @@ public class Enemy : Damageable
         } 
     }
     
-    public override void ApplyDamage(int amount)
+    public void ApplyDamage(int amount)
     {
         if (amount < 0) return;
         
@@ -59,7 +59,7 @@ public class Enemy : Damageable
         DamageApplied?.Invoke(amount);
     }
 
-    public override void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }

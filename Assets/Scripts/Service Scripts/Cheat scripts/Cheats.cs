@@ -76,13 +76,11 @@ public class Cheats : MonoBehaviour
 public class CommandParser : IDisposable
 {
     private Action _action;
-    private GameObject _player;
     private readonly Dictionary<string, GameObject> _objects;
     private readonly Dictionary<string, Vector3> _places;
 
     public CommandParser(GameObject[] fastAccessObjects, Vector3[] positions)
     {
-        _player = fastAccessObjects[0];
         _places = new Dictionary<string, Vector3>
         {
             { "kakuro", positions[0] },
@@ -160,23 +158,24 @@ public class CommandParser : IDisposable
             o = GameObject.Find("obj");
         
         if (o != null)
-            return () => { o.SetActive(false); };
-        else
-            throw new ArgumentException("Object not found");
+            return () => o.SetActive(false);
+        
+        throw new ArgumentException("Object not found");
     }
 
     private Action Kill(string obj)
     {
         if (obj == "self" || obj == "player")
-            return () => { Player.player.ApplyDamage(4); };
-        else if (obj == "enemy" || obj == "enemies")
+            return () => Player.player.ApplyDamage(4);
+        
+        if (obj == "enemy" || obj == "enemies")
             return () =>
             {
                 foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
                     enemy.SendMessage("Die");
             };
-        else
-            throw new ArgumentException("Invalid object to kill");
+        
+        throw new ArgumentException("Invalid object to kill");
     }
 
     private Action Teleport(string place)
@@ -197,12 +196,11 @@ public class CommandParser : IDisposable
         {
             case "main menu":
             case "mainmenu":
-                return () => { LoadingManager.Load(0); Time.timeScale = 1;
-                };
+                return () => LoadingManager.Load(0);
             case "1":
-                return () => { LoadingManager.Load(3); Time.timeScale = 1;};
+                return () => LoadingManager.Load(3);
             case "2":
-                return () => { LoadingManager.Load(4); Time.timeScale = 1;};
+                return () => LoadingManager.Load(4);
             default:
                 throw new ArgumentException();
         }
