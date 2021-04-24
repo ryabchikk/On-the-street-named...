@@ -26388,7 +26388,7 @@ GameObject:
   - component: {fileID: 1715112257}
   - component: {fileID: 1715112256}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: Quest panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30465,6 +30465,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1715112255}
     m_Modifications:
+    - target: {fileID: 1911150369572249464, guid: 5b2ec4d3280f5144e9e3b955d5cb568d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2071010792460374672, guid: 5b2ec4d3280f5144e9e3b955d5cb568d,
         type: 3}
       propertyPath: m_Text
@@ -30484,6 +30489,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Starting point
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697900930553206276, guid: 5b2ec4d3280f5144e9e3b955d5cb568d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7715198333247954584, guid: 5b2ec4d3280f5144e9e3b955d5cb568d,
         type: 3}

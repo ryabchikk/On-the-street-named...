@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,18 +10,24 @@ public class QuestPanel : MonoBehaviour
     [SerializeField] private RectTransform start;
     private List<Quest> _quests;
 
-    private void Start()
+    private void OnEnable()
     {
+        Player.player.DeactivateShooting();
         _quests = QuestContainer.container.quests;
         
 
         for (var i = 0; i < _quests.Count; i++)
         {
-            var quest = Instantiate(display, transform);
-            var questTransform = quest.GetComponent<RectTransform>();
+            var questDisplay = Instantiate(display, transform);
+            var questDisplayTransform = questDisplay.GetComponent<RectTransform>();
             
-            questTransform.anchoredPosition = start.anchoredPosition + Vector2.down * i * questTransform.sizeDelta.y;
-            quest.GetComponent<QuestDisplay>().Init(_quests[i]);
+            questDisplayTransform.anchoredPosition = start.anchoredPosition + Vector2.down * i * questDisplayTransform.sizeDelta.y;
+            questDisplay.GetComponent<QuestDisplay>().Init(_quests[i]);
         }
+    }
+
+    private void OnDisable()
+    {
+        Player.player.ActivateShooting();
     }
 }
