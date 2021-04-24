@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 4
-  sqrRadius: 5000
+  sqrRadius: 9000
   sqrAttackDistance: 36
   nav: {fileID: 7311358982257385483}
   health: 3
