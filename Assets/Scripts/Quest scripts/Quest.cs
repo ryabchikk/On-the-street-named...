@@ -25,7 +25,7 @@ public class Quest
     }
     private void OnQuestCompleted()
     {
-        UpscreenNotification.notificator.Add("Журнал заданий обновлен");
+        UpscreenNotificator.Notify("Журнал заданий обновлен");
         completed = true;
     }
 }

@@ -14,7 +14,7 @@ public class InfoPanel : MonoBehaviour
 
     private void ActivateText(int index)
     {
-        UpscreenNotification.notificator.Add("Информационная панель обновлена");
+        UpscreenNotificator.Notify("Информационная панель обновлена");
         textBlocks[index].enabled = true;
     }
 

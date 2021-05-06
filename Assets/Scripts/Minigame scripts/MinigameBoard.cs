@@ -8,11 +8,11 @@ public abstract class MinigameBoard : MonoBehaviour
     protected void Awake()
     {
         _player = Player.player;
-        _player?.DeactivateShooting();
+        _player.DeactivateShooting();
     }
 
     protected void OnDestroy()
     {
-        _player?.ActivateShooting();
+        _player.ActivateShooting();
     }
 }
