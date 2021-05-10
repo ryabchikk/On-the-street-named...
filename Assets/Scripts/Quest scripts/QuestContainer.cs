@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class QuestContainer : MonoBehaviour
 {
-    [ReadOnly] public List<Quest> quests = new List<Quest>();
+#if UNITY_EDITOR
+    [ReadOnly]
+#endif
+    public List<Quest> quests = new List<Quest>();
+   
     public static QuestContainer container;
 
     private void Awake()
