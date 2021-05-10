@@ -201,7 +201,6 @@ GameObject:
   - component: {fileID: 7532869909874514698}
   - component: {fileID: 2509934208842386948}
   - component: {fileID: 7927838011373344803}
-  - component: {fileID: 704905482936022950}
   m_Layer: 0
   m_Name: Fast enemy
   m_TagString: Untagged
@@ -216,14 +215,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7532869909874514689}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.0635068, y: 11.551948, z: 1.815088}
   m_Children:
   - {fileID: 3198922569962878869}
   m_Father: {fileID: 7532869910213589852}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &7532869909874514700
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -300,7 +299,6 @@ MonoBehaviour:
   movingCooldown: 4
   speed: 100
   targets:
-  - {fileID: 3198922569962878869}
   - {fileID: 7532869909269835868}
   - {fileID: 347360509492989906}
 --- !u!114 &2509934208842386948
@@ -330,23 +328,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!54 &704905482936022950
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532869909874514689}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &7532869910213589855
 GameObject:
@@ -448,25 +430,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health bar
       objectReference: {fileID: 0}
-    - target: {fileID: 8543335504342757435, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
+    - target: {fileID: 8543335504234686702, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
         type: 3}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8543335504342757435, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543335504342757435, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
+        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8543335504611443130, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8543335504611443130, guid: 4dff68e64fe7d7d4a85c7c01810cc435,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dff68e64fe7d7d4a85c7c01810cc435, type: 3}
