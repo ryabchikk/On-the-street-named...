@@ -29,9 +29,14 @@ public class CheckersBoard : MinigameBoard
             
             block.Init(i, i < 4 ? Color.black : i > 4 ? Color.white : Color.clear, this);
             _blocks[i] = block;
+            _blocks[i].Button.interactable = false;
         }
-        
-        UpdateButtons();
+
+        for (int i = 1; i < 3; i++)
+        {
+            if (_emptyIndex + i < 9)
+                _blocks[_emptyIndex + i].Button.interactable = true;
+        }
     }
 
     private void UpdateButtons()
