@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LoadingManager.Load(4);
+        if(other.CompareTag("Player"))
+            LoadingManager.Load(4);
     }
 }
