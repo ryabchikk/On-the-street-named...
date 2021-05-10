@@ -5,6 +5,7 @@ using UnityEngine;
 //Также написал очень удобный скрипт редактора который автоматически добавляет таргеты на врага при их создании, подробнее на собрании
 public class FastEnemy : MonoBehaviour
 {
+    [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private GameObject parent;  //нужно для работы скрипта редактора
     [SerializeField] private float movingCooldown;  
     [SerializeField] private float speed;

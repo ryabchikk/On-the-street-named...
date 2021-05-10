@@ -11,7 +11,7 @@ public abstract class InteractableBox : HintCreatorBase, ICompleteable
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && Input.GetKey("e"))
+        if(other.CompareTag("Player") && Input.GetKeyDown("e"))
             if (isReusable || !isReusable && !isAlreadyUsed)
                 OnInteraction();
     }

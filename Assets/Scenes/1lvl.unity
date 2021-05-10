@@ -1433,6 +1433,10 @@ MonoBehaviour:
   - {fileID: 2121492184}
   - {fileID: 1459220609}
   - {fileID: 228341791}
+  completeables:
+  - {fileID: 1839287772}
+  - {fileID: 1949773701}
+  - {fileID: 381228058}
 --- !u!114 &59600614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19608,7 +19612,7 @@ GameObject:
   - component: {fileID: 856075171}
   - component: {fileID: 856075170}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Quests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19642,6 +19646,10 @@ MonoBehaviour:
       \"\u0410\u0437\u0431\u0443\u043A\u0430 \u041C\u043E\u0440\u0437\u0435\""
     text: 
     target: {fileID: 381228058}
+    completed: 0
+  - name: "\u041F\u0440\u043E\u0439\u0442\u0438 \u0442\u0435\u0441\u0442"
+    text: 
+    target: {fileID: 1727316110}
     completed: 0
 --- !u!4 &856075171
 Transform:
@@ -20988,6 +20996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 311
+      objectReference: {fileID: 0}
+    - target: {fileID: 81224155518073360, guid: 639ac7944bb681a42b4c77d9e38087af,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114117033023592744, guid: 639ac7944bb681a42b4c77d9e38087af,
         type: 3}
@@ -27221,6 +27234,7 @@ MonoBehaviour:
   board: {fileID: 3336008766582960663, guid: d87afcbca1ba7a747b7d74012b55f275, type: 3}
   text: {fileID: 2121492184}
   portal: {fileID: 609410486}
+  quests: {fileID: 856075170}
 --- !u!65 &1727316111
 BoxCollider:
   m_ObjectHideFlags: 0
