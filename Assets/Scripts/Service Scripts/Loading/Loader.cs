@@ -34,7 +34,8 @@ public class Loader : MonoBehaviour
             yield return null;
         }
 
-        continueButton.SetActive(true);
+        // continueButton.SetActive(true);
+        ActivateScene();
     }
     
     public void ActivateScene()

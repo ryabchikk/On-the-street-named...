@@ -33,7 +33,7 @@ public class TestBox : InteractableBox
                 i++;
         }
         
-        if (i == quests.quests.Count - 1)
+        if (i >= quests.quests.Count - 1)
             StartTest();
         else
             UpscreenNotificator.Notify("Не все задания выполнены");

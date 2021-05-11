@@ -12,6 +12,6 @@ public class EndWaypoint : MonoBehaviour
 
     private void Completed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(5);
     }
 }
