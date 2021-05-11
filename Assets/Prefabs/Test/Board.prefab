@@ -142,5 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a96d1e5c63cae479184b81ac39fc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 0}
   block: {fileID: 88355124019830481, guid: 2cbaa3b76a5bf8140a25a249d2851f83, type: 3}
   parent: {fileID: 3336008766307082052}
+  _questions:
+  - {fileID: 11400000, guid: b430f464a6edfca4ba03654a0b1a4601, type: 2}
+  - {fileID: 11400000, guid: b5e732d92c9880a428ab09afba1d9c5e, type: 2}
+  - {fileID: 11400000, guid: e26d283a8dfa2814289765cab08b3d03, type: 2}
+  - {fileID: 11400000, guid: 58ca775580f413b4a9b962969d9876d0, type: 2}

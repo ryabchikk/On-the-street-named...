@@ -8,8 +8,9 @@ public class TestBoard : MinigameBoard
     public TestBox box;
     [SerializeField] private GameObject block;
     [SerializeField] private Transform parent;
-    protected int questionsCount = 4;
+    [SerializeField] private Question[] _questions;
     protected List<string>[] answersAll;
+    protected int questionsCount;
     protected IEnumerator<string> questions;
     private readonly TestBlock[] _blocks = new TestBlock[5];
     private IEnumerator<string> _answersCurr;
@@ -17,6 +18,7 @@ public class TestBoard : MinigameBoard
 
     protected virtual void Start()
     {
+        questionsCount = _questions.Length;
         SetQnA();
         InitBlocks();
     }
@@ -47,14 +49,16 @@ public class TestBoard : MinigameBoard
     
     protected virtual void SetQnA()
     {
-        answersAll = new[]
+        answersAll = new List<string>[_questions.Length];
+        var l = new List<string>();
+        
+        for (var i = 0; i < _questions.Length; i++)
         {
-            new List<string> { "Япония", "Германия", "Узбекистан", "Азербайджан" },
-            new List<string> { "Инженер", "Разведчик", "Военный врач", "Журналист" },
-            new List<string> { "Джек", "Дора", "Кент", "Рамзай" },
-            new List<string> { "1941", "1944", "Не присвоено", "1964" },
-        };
-        questions = new List<string> { "Зорге родился:", "По образованию был:", "Псевдоним:", "Когда было присвоено звание героя советского союза?" }.GetEnumerator();
+            answersAll[i] = new List<string>(_questions[i].answers);
+            l.Add(_questions[i].question);
+        }
+
+        questions = l.GetEnumerator();
     }
 
     #endregion
