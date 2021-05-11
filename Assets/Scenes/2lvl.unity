@@ -12848,12 +12848,12 @@ PrefabInstance:
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: movingCooldown
-      value: 0.6
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: speed
-      value: 450
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7532869910213589852, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
@@ -14026,12 +14026,12 @@ PrefabInstance:
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: movingCooldown
-      value: 0.9
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: speed
-      value: 400
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7532869910213589852, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
@@ -21759,12 +21759,12 @@ PrefabInstance:
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: movingCooldown
-      value: 0.75
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: speed
-      value: 400
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7532869910213589852, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
@@ -40850,12 +40850,12 @@ PrefabInstance:
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: movingCooldown
-      value: 0.6
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7532869909874514698, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
       propertyPath: speed
-      value: 400
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7532869910213589852, guid: fbaa12a14715e0c4eb68c473ba335a50,
         type: 3}
