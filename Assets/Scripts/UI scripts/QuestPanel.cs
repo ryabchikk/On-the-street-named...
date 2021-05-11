@@ -28,6 +28,6 @@ public class QuestPanel : MonoBehaviour
 
     private void OnDisable()
     {
-        Player.player.ActivateShooting();
+        //Player.player.ActivateShooting();
     }
 }
