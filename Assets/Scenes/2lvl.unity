@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 97bf823242fa9c44c9a1f6ce31734f74
+  m_OcclusionCullingData: {fileID: 36300000, guid: f9bb4ca83c5b1e44b8a22e68ef291d71,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -43874,7 +43875,7 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 2d6f73b3cb327014fb2112d03755cf97, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 147
+  m_TreeBillboardDistance: 150
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
