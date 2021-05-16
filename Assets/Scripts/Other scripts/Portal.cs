@@ -4,7 +4,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
     [SerializeField] private BoxCollider collider;
-
+    [SerializeField] private int sceneIndex;
     public void Open()
     {
         var color = particles.main;
@@ -15,6 +15,6 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            LoadingManager.Load(4);
+            LoadingManager.Load(sceneIndex);
     }
 }

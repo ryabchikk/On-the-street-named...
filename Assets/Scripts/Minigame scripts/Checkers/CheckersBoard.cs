@@ -102,7 +102,7 @@ public class CheckersBoard : MinigameBoard
 
     private IEnumerator Victory()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(1f);
         CheckersBox.checkersBox.OnCompleted();
         Destroy(gameObject);
     }
@@ -135,7 +135,7 @@ public class CheckersBoard : MinigameBoard
                 return false;
         }
 
-        for (int i = 6; i < 9; i++)
+        for (int i = 5; i < 9; i++)
         {
             if (_blocks[i].state != State.Black)
                 return false;
