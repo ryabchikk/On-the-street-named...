@@ -28,6 +28,10 @@ internal class UpscreenNotification : MonoBehaviour
 
     public void Notify(string n)
     {
+        if (_notifications.Contains(n))
+        {
+            return;
+        }
         _notifications.Enqueue(n);
     }
 
@@ -38,8 +42,9 @@ internal class UpscreenNotification : MonoBehaviour
         while (_notifications.Count != 0)
         {
             animator.enabled = true;
-            text.text = _notifications.Dequeue();
+            text.text = _notifications.Peek();
             yield return new WaitForSeconds(2.5f);
+            _notifications.Dequeue();
             animator.enabled = false;
         }
         

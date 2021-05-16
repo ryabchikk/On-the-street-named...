@@ -8,6 +8,7 @@ TagManager:
   - Board
   - InfoPanel
   - Target
+  - FastEnemy
   layers:
   - Default
   - TransparentFX

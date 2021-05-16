@@ -25,8 +25,7 @@ public class FastEnemyEditor : Editor
         DrawDefaultInspector();
 
         var sceneTargets = _parent.GetComponentsInChildren<Transform>()
-            .Skip(2)
-            .Where(x => x is RectTransform == false && x.gameObject.CompareTag("EditorOnly") == false)
+            .Where(x => x.gameObject.CompareTag("Target"))
             .ToArray();
         
         if (sceneTargets.Length != _targets.arraySize)

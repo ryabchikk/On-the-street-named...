@@ -15,7 +15,7 @@ public class TestBox : InteractableBox
     private void Start()
     {
         _player = Player.player;
-        hintHeight = 18f;
+        hintHeight = 25f;
     }
 
     public void Success()
